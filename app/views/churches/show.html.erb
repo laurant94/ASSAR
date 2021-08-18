@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @church.name %>
+</p>
+
+<p>
+  <strong>Acronym:</strong>
+  <%= @church.acronym %>
+</p>
+
+<p>
+  <strong>Admin:</strong>
+  <%= @church.admin %>
+</p>
+
+<%= link_to 'Edit', edit_church_path(@church) %> |
+<%= link_to 'Back', churches_path %>
