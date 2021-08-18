@@ -1,40 +1,155 @@
+<% content_for :title, "Enregistrement" %>
 <% content_for :header do %>
 
 <% end %>
 
 <% content_for :content do %>
+<main>
+ <div id="hero" class="d-flex align-items-center">
 
- <section id="hero" class="d-flex align-items-center">
-
-    <div class="container-fluid" data-aos="fade-up">
+    <div class="container-fluid" data-aos="fade-up" id="app">
       <div class="row justify-content-center">
         <div class="col-xl-4 col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="150">
           <img src="<%= root_url%>assets/img/hero-img.png" class="img-fluid animated" alt="">
         </div>
         <div class="col-xl-5 col-lg-6 pt-3 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          
           <%= form_for :starter, html: { multipart: true }  do |f| %>
-            <div class="row">
-              <div class="col-md-6 mt-3 mt-md-0 form-group">
+
+            <div class="justify-content-center" v-if="index<2">
+              <p class="h2 text-white">Informations personnelles</p>
+            </div>  
+            <div class="row" v-if="index==0">
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Nom</span>
                 <%= f.text_field :firstname, placeholder: "Votre nom", class: "form-control", required: true %>
               </div>
-              <div class="col-md-6 form-group">
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Prénom</span>
                 <%= f.text_field :lastname, placeholder: "Votre prénom", class: "form-control", required: true %>
               </div>
-              <div class="col-md-6 form-group">
-                <%= f.text_field :phone, placeholder: "Téléphone", class: "form-control", required: true %>
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">E-mail</span>
+                <%= f.email_field :email, placeholder: "Email", class: "form-control", required: true %>
               </div>
-            </div>      
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Téléphone</span>
+                <%= f.phone_field :phone, placeholder: "Téléphone", class: "form-control", required: true %>
+              </div>
+              <div class="col-12 ">
+                <div class="row">
+                  <div class="col text-end">
+                    <button class="btn btn-primary btn-sm" @click="index=1" >Continuer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" v-if="index==1">
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Date de naissance</span>
+                <%= f.date_field :birthday, placeholder: "Date de naissance", class: "form-control", required: true %>
+              </div>
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Pays</span>
+                <%= f.email_field :country, placeholder: "Pays", class: "form-control", required: true %>
+              </div>
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Ville</span>
+                <%= f.email_field :city, placeholder: "Ville", class: "form-control", required: true %>
+              </div>
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Profession</span>
+                <%= f.email_field :profesion, placeholder: "Profession", class: "form-control", required: true %>
+              </div>
+              <div class="col-12 text-end">
+                <div class="row">
+                  <div class="col text-start">
+                    <button class="btn btn-primary btn-sm" @click="index=0" >Retour</button>
+                  </div>
+                  <div class="col text-end">
+                    <button class="btn btn-primary btn-sm" @click="index=2" >Continuer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+              
+
+            <div class="justify-content-center" v-if="index>1">
+              <p class="h2 text-white">Informations Sur l'église</p>
+            </div>          
+            <div class="row" v-if="index==2">
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Dénomination</span>
+                <%= f.text_field :church_name, placeholder: "Nom complet", class: "form-control", required: true %>
+              </div>
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Acronym</span>
+                <%= f.text_field :church_acronym, placeholder: "Cygle ou appelation", class: "form-control", required: true %>
+              </div>
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Boite postale</span>
+                <%= f.text_field :church_post_code, type: 'number', placeholder: "Boite postale", class: "form-control", required: true %>
+              </div>
+              <div class="col-12 text-end">
+                <div class="row">
+                  <div class="col text-start">
+                    <button class="btn btn-primary btn-sm" @click="index=1" >Retour</button>
+                  </div>
+                  <div class="col text-end">
+                    <button class="btn btn-primary btn-sm" @click="index=3" >Continuer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" v-if="index==3" >
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Date de création</span>
+                <%= f.date_field :church_birthday, placeholder: "Date de création", class: "form-control", required: true %>
+              </div>
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Agrement</span>
+                <%= f.text_field :church_agrement, placeholder: "Agrément", class: "form-control", required: true %>
+              </div>
+              <div class="input-group col-md-6 mb-3">
+                <span class="input-group-text">Nom de leader</span>
+                <%= f.text_field :church_lead, placeholder: "Nom complet de leader", class: "form-control", required: true %>
+              </div>
+              <div class="row text-end">
+                <div class="row">
+                  <div class="col text-start">
+                    <button class="btn btn-primary btn-sm" @click="index=2" >Retour</button>
+                  </div>
+                  <div class="col text-end">
+                    <%= f.submit 'Envoyer', class: "btn btn-primary btn-sm" %>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+
+            
           <% end %>
         </div>
       </div>
     </div>
 
-  </section><!-- End Hero -->
-
+  </div><!-- End Hero -->
+</main>
 <% end %>
 
-<% content_for :footer do %>
-
+<% content_for :script do %>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        message: "Salut les gens",
+        index: 0
+      }
+    })
+  </script>
 <% end %>
+
 
 <%= render template: "layouts/templates/starter/index.html.erb" %>
