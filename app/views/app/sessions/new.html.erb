@@ -1,0 +1,62 @@
+<% content_for :styles do %>
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<%= root_url %>css/style.css">
+<% end %>
+
+<% content_for :title, "Connexion" %>
+
+<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Connexion</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
+							<div class="text w-100">
+								<h2>Welcome to login</h2>
+								<p>Vous avez pas encore un compte?</p>
+								<a href="#" class="btn btn-white btn-outline-white">Demandez en un à votre église</a>
+							</div>
+			      </div>
+						<div class="login-wrap p-4 p-lg-5">
+			      	<div class="d-flex">
+			      		<div class="w-100">
+			      			<h3 class="mb-4">Connexion</h3>
+			      		</div>
+							
+			      	</div>
+              <%= form_for :user, html: { multipart: true }, url: app_login_path  do |f| %>
+                <div class="form-group mb-3">
+                  <%= f.label :phone, 'Téléphone', class: "label" %>
+                  <%= f.phone_field :phone, placeholder: 'Téléphone', class: "form-control" %>
+                </div>
+                <div class="form-group mb-3">
+                  <%= f.label :password, 'Mot de passe', class: "label" %>
+                  <%= f.phone_field :password, placeholder: 'Mot de passe', class: "form-control" %>
+                </div>
+		            <div class="form-group">
+                  <%= f.submit 'Se connecter', class: "form-control btn btn-primary submit px-3" %>
+                </div>
+                <div class="form-group d-md-flex">
+		            	<div class="w-50 text-left">
+			            	<label class="checkbox-wrap checkbox-primary mb-0">Rester connecter
+									  <input type="checkbox" checked>
+									  <span class="checkmark"></span>
+										</label>
+									</div>
+									<div class="w-50 text-md-right">
+										<a href="#">Mot de passe oublié</a>
+									</div>
+		            </div>
+              <% end %>
+		        </div>
+		      </div>
+				</div>
+			</div>
+		</div>
+	</section>

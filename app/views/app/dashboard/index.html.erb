@@ -1,0 +1,40 @@
+<div id="apps">
+  <v-app>
+    <v-navigation-drawer app>
+      <!-- -->
+      <a href="#">Salut</a>
+      <a href="#">ok</a>
+    </v-navigation-drawer>
+
+    <v-app-bar app color="primary">
+      <!-- -->
+    </v-app-bar>
+
+    <!-- Sizes your content based upon application components -->
+    <v-main>
+
+      <!-- Provides the application the proper gutter -->
+      <v-container fluid>
+        <p>Salut Lorem, ipsum dolor sit amet consectetur adipisicing elit. Earum natus eius, a, adipisci hic similique nam voluptatum qui laboriosam ad ex illo, quos nulla magnam facilis vitae distinctio aut deleniti?</p>
+        <!-- If using vue-router -->
+      </v-container>
+    </v-main>
+
+    <v-footer app>
+      <!-- -->
+    </v-footer>
+  </v-app>
+</div>
+
+
+<% content_for :script do %>
+  <script>
+    var apps = new Vue({
+      el: "#apps",
+      vuetify: new Vuetify(),
+      data: {
+
+      }
+    })
+  </script>
+<% end %>

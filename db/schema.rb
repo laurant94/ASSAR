@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_18_001252) do
+ActiveRecord::Schema.define(version: 2021_08_23_202423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,28 +18,56 @@ ActiveRecord::Schema.define(version: 2021_08_18_001252) do
   create_table "children", force: :cascade do |t|
     t.string "name"
     t.string "acronym"
-    t.bigint "church_id"
+    t.string "country"
+    t.string "city"
+    t.string "phone"
+    t.string "email"
+    t.string "location"
+    t.string "location_descriptor"
+    t.string "post_code"
+    t.bigint "president_id"
+    t.bigint "vice_president_id"
+    t.bigint "secretary_id"
+    t.bigint "manager_id"
+    t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "church_id"
+    t.index ["admin_id"], name: "index_children_on_admin_id"
     t.index ["church_id"], name: "index_children_on_church_id"
+    t.index ["manager_id"], name: "index_children_on_manager_id"
+    t.index ["president_id"], name: "index_children_on_president_id"
+    t.index ["secretary_id"], name: "index_children_on_secretary_id"
+    t.index ["vice_president_id"], name: "index_children_on_vice_president_id"
+  end
+
+  create_table "children_faithfuls", id: false, force: :cascade do |t|
+    t.bigint "faithful_id"
+    t.bigint "child_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_children_faithfuls_on_child_id"
+    t.index ["faithful_id"], name: "index_children_faithfuls_on_faithful_id"
   end
 
   create_table "churches", force: :cascade do |t|
     t.string "name"
     t.string "acronym"
+    t.integer "category"
+    t.string "phone"
+    t.datetime "foundation_date"
+    t.string "agrement"
+    t.string "leader_name"
+    t.string "country"
+    t.string "city"
+    t.string "location"
+    t.text "location_descriptor"
+    t.string "email"
+    t.string "post_code"
     t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admin_id"], name: "index_churches_on_admin_id"
-  end
-
-  create_table "curches", force: :cascade do |t|
-    t.string "name"
-    t.string "acronym"
-    t.bigint "admin_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["admin_id"], name: "index_curches_on_admin_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,13 +76,20 @@ ActiveRecord::Schema.define(version: 2021_08_18_001252) do
     t.string "firstname"
     t.string "lastname"
     t.string "password_digest"
-    t.string "activated"
+    t.integer "role", default: 1, null: false
+    t.string "activated", default: "f"
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "children", "churches"
+  add_foreign_key "children", "users", column: "admin_id"
+  add_foreign_key "children", "users", column: "manager_id"
+  add_foreign_key "children", "users", column: "president_id"
+  add_foreign_key "children", "users", column: "secretary_id"
+  add_foreign_key "children", "users", column: "vice_president_id"
+  add_foreign_key "children_faithfuls", "children"
+  add_foreign_key "children_faithfuls", "users", column: "faithful_id"
   add_foreign_key "churches", "users", column: "admin_id"
-  add_foreign_key "curches", "users", column: "admin_id"
 end

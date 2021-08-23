@@ -1,4 +1,6 @@
 class StarterController < ApplicationController
+  skip_before_action :only_login_in
+
   def index
   end
 
@@ -6,5 +8,6 @@ class StarterController < ApplicationController
   end
 
   def create
+    
   end
 end

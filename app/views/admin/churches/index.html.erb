@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admin Churches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Acronym</th>
+      <th>Categorie</th>
+      <th>Phone</th>
+      <th>Foundation date</th>
+      <th>Agrement</th>
+      <th>Leader name</th>
+      <th>Country</th>
+      <th>City</th>
+      <th>Location</th>
+      <th>Location descriptor</th>
+      <th>Email</th>
+      <th>Post code</th>
+      <th>Admin</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_churches.each do |admin_church| %>
+      <tr>
+        <td><%= admin_church.name %></td>
+        <td><%= admin_church.acronym %></td>
+        <td><%= admin_church.category %></td>
+        <td><%= admin_church.phone %></td>
+        <td><%= admin_church.foundation_date %></td>
+        <td><%= admin_church.agrement %></td>
+        <td><%= admin_church.leader_name %></td>
+        <td><%= admin_church.country %></td>
+        <td><%= admin_church.city %></td>
+        <td><%= admin_church.location %></td>
+        <td><%= admin_church.location_descriptor %></td>
+        <td><%= admin_church.email %></td>
+        <td><%= admin_church.post_code %></td>
+        <td><%= admin_church.admin %></td>
+        <td><%= link_to 'Show', admin_church %></td>
+        <td><%= link_to 'Edit', edit_admin_church_path(admin_church) %></td>
+        <td><%= link_to 'Destroy', admin_church, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admin Church', new_admin_church_path %>

@@ -1,0 +1,87 @@
+<%= form_with(model: admin_church, local: true) do |form| %>
+  <% if admin_church.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(admin_church.errors.count, "error") %> prohibited this admin_church from being saved:</h2>
+
+      <ul>
+      <% admin_church.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :acronym %>
+    <%= form.text_field :acronym %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.select :category, options_for_select(Admin::Church.categories), include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.phone_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :foundation_date %>
+    <%= form.date_field :foundation_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :agrement %>
+    <%= form.text_field :agrement %>
+  </div>
+
+  <div class="field">
+    <%= form.label :leader_name %>
+    <%= form.text_field :leader_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :country %>
+    <%= form.text_field :country %>
+  </div>
+
+  <div class="field">
+    <%= form.label :city %>
+    <%= form.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location_descriptor %>
+    <%= form.text_area :location_descriptor %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :post_code %>
+    <%= form.text_field :post_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :admin_id %>
+    <%= form.select :admin_id, options_for_select(User.all.map{ |u| [u.phone, u.id] }), include_blank: true %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
