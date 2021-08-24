@@ -1,0 +1,6 @@
+<% content_for :content do %>
+  <h1>New faithful</h1>
+  <%= render 'form', faithful: @faithful %>
+  <%= link_to 'Back', app_faithfuls_path %>
+<% end %>
+<%= render template: "layouts/templates/starter/manager.html.erb" %>

@@ -1,5 +1,6 @@
-<h1>New App Child</h1>
-
-<%= render 'form', app_child: @app_child %>
-
-<%= link_to 'Back', app_children_path %>
+<% content_for :content do %>
+  <h1>New App Child</h1>
+  <%= render 'form', app_child: @app_child %>
+  <%= link_to 'Back', app_children_path %>
+<% end %>
+<%= render template: "layouts/templates/starter/manager.html.erb" %>

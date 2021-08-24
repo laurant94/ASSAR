@@ -1,0 +1,6 @@
+<% content_for :content do %>
+  <%= @faithfuls.count %>
+
+  <a href="<%=new_app_faithful_path%>">Nouveau fidel</a>
+<% end %>
+<%= render template: "layouts/templates/starter/manager.html.erb" %>

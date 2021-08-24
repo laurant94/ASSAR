@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_one :secretaried_child, class_name: "Child", foreign_key: "secretary_id"
   has_one :managed_child, class_name: "Child", foreign_key: "manager_id"
   has_one :managed_child, class_name: "Child", foreign_key: "admin_id"
+  has_and_belongs_to_many :childs, join_table: "children_user", foreign_key: "child_id"
 
   has_secure_password
   has_secure_token :token

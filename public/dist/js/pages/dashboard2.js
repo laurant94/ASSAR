@@ -69,7 +69,8 @@ $(function () {
     type: 'line',
     data: salesChartData,
     options: salesChartOptions
-  })
+  }
+  )
 
   //---------------------------
   // - END MONTHLY SALES CHART -

@@ -1,0 +1,18 @@
+<%= form_for faithful do |f| %>
+  <% if faithful.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(faithful.errors.count, "error") %> prohibited this app_child from being saved:</h2>
+
+      <ul>
+      <% faithful.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :firstname %>
+    <%= f.text_field :firstname %>
+  </div>
+<% end %>

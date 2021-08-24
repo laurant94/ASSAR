@@ -1,0 +1,135 @@
+<div id="app">
+  <v-app >
+    <v-navigation-drawer app v-model="drawer">
+      <template v-slot:prepend>
+        <v-list-item two-line>
+          <v-list-item-avatar>
+            <img src="https://randomuser.me/api/portraits/women/81.jpg">
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            <v-list-item-title><%=current_user.firstname%></v-list-item-title>
+            <v-list-item-subtitle><%=current_user.email%></v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </template>
+
+      <v-divider></v-divider>
+
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item-group
+          active-class="deep-purple--text text--accent-4"
+        >
+        
+        <% if current_user.managed_church? %>
+          <v-text class="font-weight-thin headline" >Gestion d'église</v-text>
+          <v-divider></v-divider>
+          <v-list-item href="<%= app_children_path%>" >
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Nos églises</v-list-item-title>
+          </v-list-item>
+          <v-list-item href="<%= app_faithfuls_path%>" >
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Nos Fidèles</v-list-item-title>
+          </v-list-item>
+          <v-list-item href="<%= app_children_path%>" >
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Groupes</v-list-item-title>
+          </v-list-item>
+          <v-list-item href="<%= app_children_path%>" >
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Publications</v-list-item-title>
+          </v-list-item>
+        <% end %>
+        
+        <% if current_user.preside_child? %>
+          <v-text class="font-weight-thin headline" >President d'église</v-text>
+          <v-divider></v-divider>
+          <v-list-item href="<%= app_children_path%>" >
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Nos églises</v-list-item-title>
+          </v-list-item>
+        <% end %>
+
+        <% if current_user.vice_preside_child? %>
+          <v-text class="font-weight-thin headline" >President d'église</v-text>
+          <v-divider></v-divider>
+          <v-list-item href="<%= app_children_path%>" >
+            <v-list-item-icon>
+              <v-icon>mdi-home</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Nos églises</v-list-item-title>
+          </v-list-item>
+        <% end %>
+        
+          
+
+          
+        </v-list-item-group>
+      </v-list>
+
+      <template v-slot:append>
+        <div class="pa-2">
+          <v-btn block>
+            Logout
+          </v-btn>
+        </div>
+      </template>
+    </v-navigation-drawer>
+
+    <v-app-bar app dark color="primary">
+      <v-app-bar-nav-icon @click="drawer = !drawer" ></v-app-bar-nav-icon>
+      <v-app-bar-title> ASSA </v-app-bar-title>
+    </v-app-bar>
+
+    <!-- Sizes your content based upon application components -->
+    <v-main>
+      <%  if logged_in? %>
+
+        <a href="<%= app_logout_path %>" data-method="DETELE" >Deconnecter</a>
+      
+      <% end %>
+    
+      <v-container fluid>
+        <%= yield :content %>
+      </v-container>
+    </v-main>
+
+    <v-footer app>
+      <!-- -->
+    </v-footer>
+  </v-app>
+</div>
+
+
+
+
+
+
+
+
+<% content_for :styles do %>
+  
+<% end %>
+
+<% content_for :script do %>
+  <script>
+    
+
+
+  </script>
+  <%= yield :vueScript %>
+<% end %>

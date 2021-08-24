@@ -24,6 +24,8 @@ class App::ChildrenController < ApplicationController
     @app_child = App::Child.new(app_child_params)
 
     respond_to do |format|
+      @church = current_user.managed_church
+      @app_child.church = @church
       if @app_child.save
         format.html { redirect_to @app_child, notice: "Child was successfully created." }
         format.json { render :show, status: :created, location: @app_child }
@@ -64,6 +66,8 @@ class App::ChildrenController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def app_child_params
-      params.require(:app_child).permit(:name, :acronym, :country, :city, :phone, :email, :location, :location_descriptor, :post_code, :church_id, :president_id, :vice_president_id, :secretary_id, :manager_id, :admin_id)
+      params.require(:app_child).permit(:name, :acronym, :country, :city, :phone,
+        :email, :location, :location_descriptor, :post_code, :president_id, 
+        :vice_president_id, :secretary_id, :manager_id, :admin_id)
     end
 end
