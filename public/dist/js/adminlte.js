@@ -1919,10 +1919,10 @@
     if ($__default['default'](button).data('widget') !== 'pushmenu') {
       button = $__default['default'](button).closest(SELECTOR_TOGGLE_BUTTON);
     }
-
     PushMenu._jQueryInterface.call($__default['default'](button), 'toggle');
   });
   $__default['default'](window).on('load', function () {
+    
     PushMenu._jQueryInterface.call($__default['default'](SELECTOR_TOGGLE_BUTTON));
   });
   /**

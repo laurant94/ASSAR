@@ -11,22 +11,76 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+   
+    <%= content_for :styles %>
+
     
-  
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
-    <%= yield :styles %>
+    <% unless content_for?(:noapp)   %>
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+      <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+      <link rel="stylesheet" href="<%=root_url%>plugins/fontawesome-free/css/all.min.css">
+      <link rel="stylesheet" href="<%=root_url%>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+      <link rel="stylesheet" href="<%=root_url%>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+      <link rel="stylesheet" href="<%=root_url%>plugins/jqvmap/jqvmap.min.css">
+      <link rel="stylesheet" href="<%=root_url%>dist/css/adminlte.min.css">
+      <link rel="stylesheet" href="<%=root_url%>plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+      <link rel="stylesheet" href="<%=root_url%>plugins/daterangepicker/daterangepicker.css">
+      <link rel="stylesheet" href="<%=root_url%>plugins/summernote/summernote-bs4.min.css">
+
+      <script src="<%=root_url%>plugins/jquery/jquery.min.js"></script>
+      <script src="<%=root_url%>plugins/jquery-ui/jquery-ui.min.js"></script>
+      <script>
+        $.widget.bridge('uibutton', $.ui.button)
+      </script>
+      <script src="<%=root_url%>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <!-- ChartJS -->
+      <script src="<%=root_url%>plugins/chart.js/Chart.min.js"></script>
+      <!-- Sparkline -->
+      <script src="<%=root_url%>plugins/sparklines/sparkline.js"></script> 
+      <!-- JQVMap -->
+      <script src="<%=root_url%>plugins/jqvmap/jquery.vmap.min.js"></script>
+      <script src="<%=root_url%>plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+      <!-- jQuery Knob Chart -->
+      <script src="<%=root_url%>plugins/jquery-knob/jquery.knob.min.js"></script>
+      <!-- daterangepicker -->
+      <script src="<%=root_url%>plugins/moment/moment.min.js"></script>
+      <script src="<%=root_url%>plugins/daterangepicker/daterangepicker.js"></script>
+      <!-- Tempusdominus Bootstrap 4 -->
+      <script src="<%=root_url%>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+      <!-- Summernote -->
+      <script src="<%=root_url%>plugins/summernote/summernote-bs4.min.js"></script>
+      <!-- overlayScrollbars -->
+      <script src="<%=root_url%>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+      <!-- AdminLTE App -->
+      <script src="<%=root_url%>dist/js/adminlte.js"></script>
+      <!-- AdminLTE for demo purposes -->
+      <!-- <script src="<%=root_url%>dist/js/demo.js"></script> -->
+      <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+      <!-- <script src="<%=root_url%>dist/js/pages/dashboard.js"></script> -->
+    <% end %>
+    
+    
+
   </head>
 
-  <body >
-    <%= yield %>
+  <body class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+      
+      <% unless content_for?(:noapp)  %>
+        <%= render 'layouts/templates/starter/navbar' %>
+        <%= render 'layouts/templates/starter/sidebar' %>
+        <%= render 'layouts/templates/starter/body' %>
+      <% else %>
+        <%= yield %>
+      <% end %>
+      
+      
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
-    <script src="https://unpkg.com/vuex"></script>
+    </div>
+
     <%= yield :script %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
+
 </html>

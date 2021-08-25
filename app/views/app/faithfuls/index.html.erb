@@ -1,6 +1,82 @@
-<% content_for :content do %>
-  <%= @faithfuls.count %>
+<div class="card">
+  <div class="card-header">
+    <h3>Liste des fidèles</h3>
+  </div>
+  <div class="card-body">
+    <div class="row text-right">
+      <div class="col-12">
+        <%= link_to 'Nouveau Fidèle', new_app_faithful_path, data: {turbolinks: false}, class: 'btn btn-primary btn-sm text-white mb-2' %>
+      </div>
+    </div>
+    <table id="faithfulList" class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nom</th>
+          <th>Prénom</th>
+          <th>Téléphone</th>
+          <th>Profession</th>
+          <th>Groupes</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @faithfuls.each do |f| %>
+          <tr>
+            <td> <%= f.id %> </td>
+            <td> <%= f.firstname %> </td>
+            <td> <%= f.lastname %> </td>
+            <td> <%= f.phone %> </td>
+            <td> <%= f.profession %> </td>
+            <td> <%= f.lastname %> </td>
+            <td> <%= f.lastname %> </td>
 
-  <a href="<%=new_app_faithful_path%>">Nouveau fidel</a>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<% content_for :styles do%>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Theme style -->
 <% end %>
-<%= render template: "layouts/templates/starter/manager.html.erb" %>
+
+
+<% content_for :script do%>
+  <script src="<%=root_url%>plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="<%=root_url%>plugins/jszip/jszip.min.js"></script>
+  <script src="<%=root_url%>plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="<%=root_url%>plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="<%=root_url%>plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script>
+    $('#faithfulList').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  </script>
+<% end %>

@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: { case_sensitive: true }, 
     length: {maximum: 255}, 
     format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i }
-  validates :password, presence: true, length: { minimum:6,  maximum: 50}
+  validates :password, presence: false, length: { minimum:6,  maximum: 50}
   # validates :username, presence: false, 
   #   uniqueness: { case_sensitive: false }, 
   #   format: { with: /\A[a-zA-Z0-9_]{2,20}\z/, message: "ne doit contenir que des eractères alphanumeriques" }

@@ -1,9 +1,6 @@
-<%content_for :content do%>
-  <h1>Editing App Child</h1>
+<h1>Editing App Child</h1>
 
-  <%= render 'form', app_child: @app_child %>
+<%= render 'form', app_child: @app_child %>
 
-  <%= link_to 'Show', @app_child %> |
-  <%= link_to 'Back', app_children_path %>
-<% end %>
-<%= render template: "layouts/templates/starter/manager.html.erb" %>
+<%= link_to 'Show', @app_child %> |
+<%= link_to 'Back', app_children_path %>

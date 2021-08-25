@@ -9,8 +9,10 @@ class App::FaithfulsController < ApplicationController
   end
 
   def create
-    @faithful = new User(user_params)
-    if @faithful.save
+    @faithful = User.new(user_params)
+    @child = Child.find(params[:user][:id])
+    if @faithful.save(validate: false)
+      @child.faithfuls << @faithful
       redirect_to app_faithful_path(@faithful.id), notice: "faithful created"
     else
       render :new
@@ -42,6 +44,7 @@ class App::FaithfulsController < ApplicationController
   end
 
   def user_params
-    params.require(:faithful).permit(:phone, :email, :firstname, :lastname)
+    params.require(:user).permit(:phone, :email, :firstname, :lastname,
+    :profession)
   end
 end
