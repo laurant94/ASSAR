@@ -16,8 +16,8 @@ class User < ApplicationRecord
   has_one :vice_preside_child, class_name: "Child", foreign_key: "vice_president_id"
   has_one :secretaried_child, class_name: "Child", foreign_key: "secretary_id"
   has_one :managed_child, class_name: "Child", foreign_key: "manager_id"
-  has_one :managed_child, class_name: "Child", foreign_key: "admin_id"
-  has_and_belongs_to_many :childs, join_table: "children_user", foreign_key: "child_id"
+  has_one :admin_child, class_name: "Child", foreign_key: "admin_id"
+  has_and_belongs_to_many :childs, join_table: "children_faithful", foreign_key: "faithful_id"
 
   has_secure_password
   has_secure_token :token
@@ -30,6 +30,10 @@ class User < ApplicationRecord
 
   def managed_church?
     self.managed_church.present?
+  end
+
+  def managed_child?
+    self.admin_child.present?
   end
 
   def preside_child?

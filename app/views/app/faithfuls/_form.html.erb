@@ -1,4 +1,4 @@
-<%= form_for faithful, url: app_faithfuls_path do |f| %>
+<%= form_for faithful do |f| %>
   <% if faithful.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(faithful.errors.count, "error") %> prohibited this app_child from being saved:</h2>
@@ -36,13 +36,14 @@
     <%= f.text_field :profession, class: "form-control", required: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :id, "Station" %>
-    <%= f.select :id, 
-    options_for_select(current_user.managed_church.childs.map{|c| [c.name, c.id]}), 
-    include_blank: true, required: true %>
+  <div class="form-group">
+    <%= f.label :child_id, "Station" %>
+    <%= f.select :child_id,
+    options_for_select(current_user.managed_church.childs.map{|c| [c.name, c.id]}, selected: @faithful.childs.present? ? @faithful.childs.last.id : 0), 
+    {include_blank: true, required: true}, {class: "form-control"} %>
   </div>
   <div class="field">
-    <%= f.submit 'Submit' %>
+    <%= f.submit 'Submit', class: "btn btn-primary btn-sm" %>
   </div>
+
 <% end %>

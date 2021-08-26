@@ -13,37 +13,37 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, required: true%>
   </div>
 
   <div class="field">
     <%= form.label :acronym %>
-    <%= form.text_field :acronym %>
+    <%= form.text_field :acronym, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :country %>
-    <%= form.text_field :country %>
+    <%= form.text_field :country, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :city %>
-    <%= form.text_field :city %>
+    <%= form.text_field :city, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :phone %>
-    <%= form.phone_field :phone %>
+    <%= form.phone_field :phone, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.email_field :email %>
+    <%= form.email_field :email, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :location %>
-    <%= form.text_field :location %>
+    <%= form.text_field :location, required: false%>
   </div>
 
   <div class="field">
@@ -53,7 +53,7 @@
 
   <div class="field">
     <%= form.label :post_code %>
-    <%= form.number_field :post_code %>
+    <%= form.number_field :post_code, required: true %>
   </div>
 
   <div class="field">

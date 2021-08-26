@@ -1,53 +1,107 @@
-<p id="notice"><%= notice %></p>
+<div class="card">
+  <div class="card-header">
+    <h3>Liste des églises</h3>
+  </div>
+  <div class="card-body">
+    <div class="row text-right">
+      
+      <% if notice %>
+        <div class="col-12">
+          <div class="alert alert-success">
+            <p id="notice"><%= notice %></p>
+          </div>
+        </div>
+      <% end %>
+      
+      
+      <div class="col-12">
+        <%= link_to 'Nouvelle église', new_app_child_path, data: {turbolinks: false}, class: 'btn btn-primary btn-sm text-white mb-2' %>
+      </div>
+    </div>
+    <table id="childrenList" class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Acronyme</th>
+          <th>Telephone</th>
+          <th>Ville</th>
+          <th>Email</th>
+          <th>Code postal</th>
+          <th>Président</th>
+          <th>Vice président</th>
+          <th>Sécretaire</th>
+          <th>Gestionnair</th>
+          <th>Administrateur</th>
+          <th >Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @app_children.each do |app_child| %>
+          <tr>
+            <td><%= app_child.id %></td>
+            <td><%= app_child.acronym %></td>
+            <td><%= app_child.phone %></td>
+            <td><%= app_child.city %></td>
+            <td><%= app_child.email %></td>
+            <td><%= app_child.post_code %></td>
+            <td><%= "#{app_child.president.firstname} #{app_child.president.lastname}" %></td>
+            <td><%= "#{app_child.vice_president.firstname} #{app_child.vice_president.lastname}" %></td>
+            <td><%= "#{app_child.secretary.firstname} #{app_child.secretary.lastname}" %></td>
+            <td><%= "#{app_child.manager.firstname} #{app_child.manager.lastname}" %></td>
+            <td><%= "#{app_child.admin.firstname} #{app_child.admin.lastname}" %></td>
+            <td>
+              <%= link_to content_tag('i', 'Voir', class: "fa fa-eye"), app_child, class: 'btn btn-success btn-xs text-white' %>
+              <%= link_to content_tag('i', 'Editer', class: "fa fa-pen"), edit_app_child_path(app_child), class: 'btn btn-primary btn-xs text-white' %>
+              <%= link_to content_tag('i', 'Supprimer', class: "fa fa-trash"), app_child, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs text-white' %>
+              
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
-<h1>Nos églises</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Acronym</th>
-      <th>Country</th>
-      <th>City</th>
-      <th>Phone</th>
-      <th>Email</th>
-      <th>Location</th>
-      <th>Location descriptor</th>
-      <th>Post code</th>
-      <th>President</th>
-      <th>Vice president</th>
-      <th>Secretary</th>
-      <th>Manager</th>
-      <th>Admin</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @app_children.each do |app_child| %>
-      <tr>
-        <td><%= app_child.name %></td>
-        <td><%= app_child.acronym %></td>
-        <td><%= app_child.country %></td>
-        <td><%= app_child.city %></td>
-        <td><%= app_child.phone %></td>
-        <td><%= app_child.email %></td>
-        <td><%= app_child.location %></td>
-        <td><%= app_child.location_descriptor %></td>
-        <td><%= app_child.post_code %></td>
-        <td><%= app_child.president %></td>
-        <td><%= app_child.vice_president %></td>
-        <td><%= app_child.secretary %></td>
-        <td><%= app_child.manager %></td>
-        <td><%= app_child.admin %></td>
-        <td><%= link_to 'Show', app_child %></td>
-        <td><%= link_to 'Edit', edit_app_child_path(app_child) %></td>
-        <td><%= link_to 'Destroy', app_child, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New App Child', new_app_child_path %>
 
+
+
+<% content_for :styles do%>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../../plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Theme style -->
+<% end %>
+
+
+<% content_for :script do%>
+  <script src="<%=root_url%>plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+  <script src="<%=root_url%>plugins/jszip/jszip.min.js"></script>
+  <script src="<%=root_url%>plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="<%=root_url%>plugins/pdfmake/vfs_fonts.js"></script>
+  <script src="<%=root_url%>plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <script src="<%=root_url%>plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+  <script>
+    $('#childrenList').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  </script>
+<% end %>

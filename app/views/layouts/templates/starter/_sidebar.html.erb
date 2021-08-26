@@ -44,11 +44,25 @@
             </p>
           </a>
         </li>
+        
+      <% if current_user.managed_church? %>
         <li class="nav-item">
           <a href="<%=app_children_path%>" data-turbolinks="false" class="nav-link">
             <i class="nav-icon fas fa-th"></i>
             <p>
               Nos églises
+            </p>
+          </a>
+        </li>
+      <% end %>
+
+      
+      <% if current_user.managed_child? %>
+        <li class="nav-item">
+          <a href="<%=app_faithfuls_path%>" data-turbolinks="false" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>
+              Nos Groupes
             </p>
           </a>
         </li>
@@ -60,6 +74,11 @@
             </p>
           </a>
         </li>
+      <% end %>
+      
+        
+        
+        
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-chart-pie"></i>

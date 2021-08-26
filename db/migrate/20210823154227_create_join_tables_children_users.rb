@@ -1,6 +1,6 @@
 class CreateJoinTablesChildrenUsers < ActiveRecord::Migration[5.2]
   def change
-    create_join_table :user, :children do |t|
+    create_join_table :faithful, :children do |t|
       t.references :faithful, references: :users, foreign_key: {to_table: :users}
       t.references :child, foreign_key: true
       t.timestamps

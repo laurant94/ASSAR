@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     get 'dashboard', to: "dashboard#index", as: :dashboard
     resources :posts
     resources :children
-    resources :faithfuls
+    resources :faithfuls do
+      member do
+        get "approve", to: "faithfuls#approve", as: :approve
+      end
+    end
   end
 
   namespace :admin do

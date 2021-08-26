@@ -1,16 +1,17 @@
 class App::FaithfulsController < ApplicationController
-  before_action :set_user, only: %i[ show, edit, update, destroy ]
+  before_action :set_user, only: [ :show, :edit, :update, :destroy, :approve ]
   def index
     @faithfuls = current_user.managed_child.faithfuls
   end
 
   def new
-    @faithful = User.new
+    @faithful = App::Faithful.new
   end
 
   def create
-    @faithful = User.new(user_params)
-    @child = Child.find(params[:user][:id])
+    @faithful = App::Faithful.new(user_params)
+    @child = App::Child.find(params[:app_faithful][:child_id])
+    
     if @faithful.save(validate: false)
       @child.faithfuls << @faithful
       redirect_to app_faithful_path(@faithful.id), notice: "faithful created"
@@ -26,11 +27,23 @@ class App::FaithfulsController < ApplicationController
   end
 
   def update
-    if @faithful.update_attributes(user_params)
+    params = user_params
+    if @faithful.update_columns( 
+      firstname: params["firstname"], 
+      lastname: params["lastname"],
+      email: params["email"],
+      phone: params["phone"],
+      profession: params["profession"],
+    )
       redirect_to app_faithful_path(@faithful.id), notice: "faithful updated"
     else
       render :edit
     end
+  end
+
+  def approve
+    @faithful.update_columns(approved: true)
+    redirect_to app_faithfuls_path, notice: "Fidele approuvé avec succes"
   end
 
   def destroy
@@ -40,11 +53,11 @@ class App::FaithfulsController < ApplicationController
 
   private
   def set_user
-    @faithful = User.find(params[:id])
+    @faithful = App::Faithful.find(params[:id])
   end
 
   def user_params
-    params.require(:user).permit(:phone, :email, :firstname, :lastname,
-    :profession)
+    params.require(:app_faithful).permit(:phone, :email, :firstname, :lastname,
+    :profession, :child_id)
   end
 end

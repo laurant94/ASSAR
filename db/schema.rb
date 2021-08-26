@@ -41,14 +41,13 @@ ActiveRecord::Schema.define(version: 2021_08_24_174649) do
     t.index ["vice_president_id"], name: "index_children_on_vice_president_id"
   end
 
-  create_table "children_user", id: false, force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "child_id"
+  create_table "children_faithful", id: false, force: :cascade do |t|
     t.bigint "faithful_id"
+    t.bigint "child_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["child_id"], name: "index_children_user_on_child_id"
-    t.index ["faithful_id"], name: "index_children_user_on_faithful_id"
+    t.index ["child_id"], name: "index_children_faithful_on_child_id"
+    t.index ["faithful_id"], name: "index_children_faithful_on_faithful_id"
   end
 
   create_table "churches", force: :cascade do |t|
@@ -92,7 +91,7 @@ ActiveRecord::Schema.define(version: 2021_08_24_174649) do
   add_foreign_key "children", "users", column: "president_id"
   add_foreign_key "children", "users", column: "secretary_id"
   add_foreign_key "children", "users", column: "vice_president_id"
-  add_foreign_key "children_user", "children"
-  add_foreign_key "children_user", "users", column: "faithful_id"
+  add_foreign_key "children_faithful", "children"
+  add_foreign_key "children_faithful", "users", column: "faithful_id"
   add_foreign_key "churches", "users", column: "admin_id"
 end
