@@ -1,0 +1,6 @@
+<% unless notice.blank? %>
+  <input type="hidden" name="toast" id="toastValue" value="<%= notice %>">
+  <script>
+    toastr.success( $("#toastValue").val() )
+  </script>  
+<% end %>

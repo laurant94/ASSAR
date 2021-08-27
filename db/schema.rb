@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_24_174649) do
+ActiveRecord::Schema.define(version: 2021_08_26_161742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,25 @@ ActiveRecord::Schema.define(version: 2021_08_24_174649) do
     t.index ["admin_id"], name: "index_churches_on_admin_id"
   end
 
+  create_table "faithful_group", id: false, force: :cascade do |t|
+    t.bigint "faithful_id"
+    t.bigint "group_id"
+    t.index ["faithful_id"], name: "index_faithful_group_on_faithful_id"
+    t.index ["group_id"], name: "index_faithful_group_on_group_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.string "acronym"
+    t.text "descriptor"
+    t.bigint "child_id"
+    t.bigint "admin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_groups_on_admin_id"
+    t.index ["child_id"], name: "index_groups_on_child_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "phone"
     t.string "email"
@@ -83,6 +102,7 @@ ActiveRecord::Schema.define(version: 2021_08_24_174649) do
     t.datetime "updated_at", null: false
     t.string "profession"
     t.boolean "approved"
+    t.string "matricule"
   end
 
   add_foreign_key "children", "churches"
@@ -94,4 +114,8 @@ ActiveRecord::Schema.define(version: 2021_08_24_174649) do
   add_foreign_key "children_faithful", "children"
   add_foreign_key "children_faithful", "users", column: "faithful_id"
   add_foreign_key "churches", "users", column: "admin_id"
+  add_foreign_key "faithful_group", "groups"
+  add_foreign_key "faithful_group", "users", column: "faithful_id"
+  add_foreign_key "groups", "children"
+  add_foreign_key "groups", "users", column: "admin_id"
 end

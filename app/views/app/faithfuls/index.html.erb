@@ -28,7 +28,11 @@
             <td> <%= f.lastname %> </td>
             <td> <%= f.phone %> </td>
             <td> <%= f.profession %> </td>
-            <td> <%= f.lastname %> </td>
+            <td> 
+            <% f.groups.each do |g| %>
+              <%= link_to g.name, app_group_path(g), class: 'btn btn-link' %>               
+            <% end %>
+            </td>
             <td>  
               <%= link_to content_tag('i', 'Approuver', class: "fa fa-check"), approve_app_faithful_path(f), data: { confirm: 'Are you sure?' }, class: "btn btn-success btn-xs text-white mb-2 #{'disabled ' if f.approved? }" %>
               <%= link_to content_tag('i', 'Voir', class: "fa fa-eye"), f, class: 'btn btn-success btn-xs text-white mb-2' %>
@@ -47,6 +51,7 @@
 
 
 
+<% content_for :page_name, 'view.faithfuls' %>
 
 <% content_for :styles do%>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

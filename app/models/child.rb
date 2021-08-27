@@ -6,5 +6,6 @@ class Child < ApplicationRecord
   belongs_to :manager, class_name: "App::Faithful", foreign_key: "manager_id"
   belongs_to :admin, class_name: "App::Faithful", foreign_key: "admin_id"
   has_and_belongs_to_many :faithfuls, join_table: "children_faithful", class_name: "App::Faithful", foreign_key: "child_id"
-
+  # Association avec group (admin)
+  has_many :groups
 end

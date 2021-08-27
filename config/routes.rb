@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root to:"starter#index"
   resources :starter, only: [:index, :new, :create]
   resources :users
@@ -15,6 +14,13 @@ Rails.application.routes.draw do
     get 'dashboard', to: "dashboard#index", as: :dashboard
     resources :posts
     resources :children
+    # Group and members
+    resources :groups do
+      member do
+        post "add-members", to: "groups#add_members", as: :add_members_to
+      end
+    end
+    
     resources :faithfuls do
       member do
         get "approve", to: "faithfuls#approve", as: :approve

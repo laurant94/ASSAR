@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-12 text-right">
+    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" 
+    data-target="#modal-faithful-to-group">
+      <i class="fa fa-plus"></i> Ajouter un membre
+    </button>
+  </div>
+</div>
+
+<p>
+  <strong>Name:</strong>
+  <%= @group.name %>
+</p>
+
+<p>
+  <strong>Acronym:</strong>
+  <%= @group.acronym %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @group.descriptor %>
+</p>
+
+<p>
+  <strong>Administrateur:</strong>
+  <%= @group.admin.present? ? "#{@group.admin.fullname}" : "Aucun" %>
+</p>
+
+<!-- Liste des membres du groupe -->
+<div class="card">
+  <div class="card-header">
+    <h4>Membres du groupe</h4>
+  </div>
+  <div class="card-body">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nom</th>
+          <th>Téléphone</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @group.faithfuls.each do |f| %>
+        <tr>
+         <td> <%= f.id %> </td>
+         <td><%= f.fullname %></td> 
+         <td><%= f.phone %></td> 
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div id="modal-faithful-to-group" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <%= form_for :members, html: { multipart: true }, url: add_members_to_app_group_path  do |f| %>
+      <div class="modal-header">
+        <h4 class="modal-title">Ajouter des membres</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <%= f.label :list, 'Membres' %>
+          <%= f.text_field :list, class: "form-control", required: true %>
+          <%= content_tag('small', 
+          "Inserer les Numeros matricules des membres que vous souhaitez ajouter séparer par des virgules(,)",
+          class: "text-danger") %>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Annuler</button>
+        <%= f.submit 'Ajouter', class:"btn btn-primary btn-sm" %>
+      </div>
+    <% end %>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_app_group_path(@group) %> |
+<%= link_to 'Back', app_groups_path %>
+
+<% content_for :page_name, 'view.groups' %>

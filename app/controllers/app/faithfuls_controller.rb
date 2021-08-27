@@ -10,7 +10,7 @@ class App::FaithfulsController < ApplicationController
 
   def create
     @faithful = App::Faithful.new(user_params)
-    @child = App::Child.find(params[:app_faithful][:child_id])
+    @child = current_user.managed_child
     
     if @faithful.save(validate: false)
       @child.faithfuls << @faithful

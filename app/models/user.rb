@@ -18,6 +18,9 @@ class User < ApplicationRecord
   has_one :managed_child, class_name: "Child", foreign_key: "manager_id"
   has_one :admin_child, class_name: "Child", foreign_key: "admin_id"
   has_and_belongs_to_many :childs, join_table: "children_faithful", foreign_key: "faithful_id"
+  # Association de group
+  has_one :group, class_name: "Group", foreign_key: "admin_id", required: false
+  has_and_belongs_to_many :groups, join_table: "faithful_group", foreign_key: "faithful_id"
 
   has_secure_password
   has_secure_token :token
@@ -26,6 +29,10 @@ class User < ApplicationRecord
 
   def to_session
     {id: id}
+  end
+
+  def fullname
+    "#{firstname} #{lastname}"
   end
 
   def managed_church?
