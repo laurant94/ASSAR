@@ -1,7 +1,6 @@
-# README
 
 ## Roles et capabilités
-  #### Admin
+  #### Admin ✨
   - Creer un utilisateur
   - Assigner un role a un utilisateur
   - Modifier un utilisateur
@@ -32,6 +31,16 @@
   - Modifier une station de son eglise
   - Supprimer une station de son eglise
   - Voir le nombre total de fideles dans l'eglise
+
+
+  ### child_manager
+  - Creer des fidèles
+  - Voir la liste des fidels dans la station ()
+  - Modifier les informations d'un fidèle
+  - Supprimer un fidèle
+  - Approuver un fidele
+  - Rejeter un fidele
+
   - Creer des publications 
   - Voir la liste des publications
   - Voir une publication
@@ -41,9 +50,16 @@
   - Creer des collectes de fond
   - Voir la liste des collectes
   - Voir une collecte
-  - Modifier une publication
-  - Supprimer une publication
-  - 
+  - Modifier une collecte de fond
+  - Supprimer une collecte de fond
 
-  ### child_manager
-  - 
+  - Creer un groupe
+  - Voir la liste des groupes
+  - Voir un groupe
+  - Modifier un groupe
+  - Supprimer un groupe
+  - Ajouter des membres a un groupe
+  - Retirer des membres d'un groupe
+
+  - Demander une connexion de station vers l'administrateur d'eglise
+  - Appouver une demande de connexion envoyer par l'administateur d'eglise
