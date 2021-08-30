@@ -1,5 +1,5 @@
 class App::GroupsController < ApplicationController
-  before_action :set_group, only: %i[ show edit update destroy, add_members ]
+  before_action :set_group, only: %i[ show edit update destroy add_members eject_member ]
 
   # GET /groups or /groups.json
   def index
@@ -73,6 +73,11 @@ class App::GroupsController < ApplicationController
 
     redirect_to app_group_path(@group), notice: "#{members.length - errors.length > 0 ? members.length - errors.length : 0} membre(s) ajoutés sur #{members.length}. 
     #{'Les matricules suivants sont invalides: ' + errors.join(', ') unless errors.empty? }"
+  end
+
+  def eject_member
+    @group.faithfuls.delete(params[:user_id])
+    redirect_to @group, notice: "Utilisateur retiré avec succes de #{@group.name}"
   end
 
 

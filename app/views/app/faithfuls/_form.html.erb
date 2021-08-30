@@ -42,8 +42,8 @@
     options_for_select(current_user.managed_church.childs.map{|c| [c.name, c.id]}, selected: @faithful.childs.present? ? @faithful.childs.last.id : 0), 
     {include_blank: true, required: true}, {class: "form-control"} %>
   </div>
-  <div class="field">
-    <%= f.submit 'Submit', class: "btn btn-primary btn-sm" %>
+  <div class="text-right">
+    <%= f.submit 'Sauvegarder', class: "btn btn-primary" %>
   </div>
 
 <% end %>

@@ -28,10 +28,14 @@
 
   <div class="field">
     <%= form.label :admin_id %>
-    <%= form.text_field :admin_id, class:"form-control" %>
+    <%= form.select :admin_id, 
+    options_for_select(@group.faithfuls.map{|f| [f.fullname||f.phone, f.id] }, 
+    selected: @group.admin.present? ? @group.admin.id : 0 ),
+    {include_blank: true}, 
+    {class:"form-control"} %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="text-right">
+    <%= form.submit 'Sauvegarder', class: "btn btn-primary" %>
   </div>
 <% end %>

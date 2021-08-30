@@ -10,6 +10,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'faker'
 gem 'uglifier', '>= 1.3.0'
 gem 'gon'
+gem "redcarpet"
 # gem 'mini_racer', platforms: :ruby
 
 gem 'coffee-rails', '~> 4.2'

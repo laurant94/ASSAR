@@ -39,14 +39,29 @@
           <th>#</th>
           <th>Nom</th>
           <th>Téléphone</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
+      
+      <% if @group.faithfuls.empty? %>
+        <tr> 
+          <td colspan="4">
+            <p class="h3 text-center">Aucun membre pour le groupe</p>
+          </td>
+        </tr>
+      <% end %>
+      
       <% @group.faithfuls.each do |f| %>
         <tr>
-         <td> <%= f.id %> </td>
-         <td><%= f.fullname %></td> 
-         <td><%= f.phone %></td> 
+          <td> <%= f.id %> </td>
+          <td><%= f.fullname %></td> 
+          <td><%= f.phone %></td> 
+          <td>
+            <%= link_to content_tag('i', 'Retirer', class: "fa fa-hand-o-left"),
+            eject_member_from_app_group_path(user_id: f.id), data: {confirm: "Are you sure?"},
+            class: 'btn btn-danger text-white btn-xs' %>
+          </td>
         </tr>
       <% end %>
       </tbody>

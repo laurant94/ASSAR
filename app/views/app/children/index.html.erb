@@ -27,6 +27,7 @@
           <th>Ville</th>
           <th>Email</th>
           <th>Code postal</th>
+          <th>Fidèles</th>
           <th>Président</th>
           <th>Vice président</th>
           <th>Sécretaire</th>
@@ -44,11 +45,12 @@
             <td><%= app_child.city %></td>
             <td><%= app_child.email %></td>
             <td><%= app_child.post_code %></td>
-            <td><%= "#{app_child.president.firstname} #{app_child.president.lastname}" %></td>
-            <td><%= "#{app_child.vice_president.firstname} #{app_child.vice_president.lastname}" %></td>
-            <td><%= "#{app_child.secretary.firstname} #{app_child.secretary.lastname}" %></td>
-            <td><%= "#{app_child.manager.firstname} #{app_child.manager.lastname}" %></td>
-            <td><%= "#{app_child.admin.firstname} #{app_child.admin.lastname}" %></td>
+            <td><%= app_child.faithfuls.size %></td>
+            <td><%= "#{app_child.president.fullname}" %></td>
+            <td><%= "#{app_child.vice_president.fullname} " %></td>
+            <td><%= "#{app_child.secretary.fullname} " %></td>
+            <td><%= "#{app_child.manager.fullname}" %></td>
+            <td><%= "#{app_child.admin.fullname} " %></td>
             <td>
               <%= link_to content_tag('i', 'Voir', class: "fa fa-eye"), app_child, class: 'btn btn-success btn-xs text-white' %>
               <%= link_to content_tag('i', 'Editer', class: "fa fa-pen"), edit_app_child_path(app_child), class: 'btn btn-primary btn-xs text-white' %>

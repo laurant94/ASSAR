@@ -1,5 +1,5 @@
 class App::FaithfulsController < ApplicationController
-  before_action :set_user, only: [ :show, :edit, :update, :destroy, :approve ]
+  before_action :set_user, only: [ :show, :edit, :update, :destroy, :approve, :eject ]
   def index
     @faithfuls = current_user.managed_child.faithfuls
   end
@@ -46,6 +46,13 @@ class App::FaithfulsController < ApplicationController
     redirect_to app_faithfuls_path, notice: "Fidele approuvé avec succes"
   end
 
+  def eject
+    
+    @faithful.childs.last.faithfuls.delete(@faithful)
+    @faithful.update_columns(approved: false)
+    redirect_to app_faithfuls_path, notice: "Fidele ejecté avec succes"
+  end
+
   def destroy
     @faithful.destroy
     redirect_to app_faithfuls_path, notice: "faithful deleted"
@@ -53,7 +60,7 @@ class App::FaithfulsController < ApplicationController
 
   private
   def set_user
-    @faithful = App::Faithful.find(params[:id])
+    @faithful = App::Faithful.childs.find(params[:id])
   end
 
   def user_params

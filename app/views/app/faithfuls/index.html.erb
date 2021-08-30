@@ -35,6 +35,7 @@
             </td>
             <td>  
               <%= link_to content_tag('i', 'Approuver', class: "fa fa-check"), approve_app_faithful_path(f), data: { confirm: 'Are you sure?' }, class: "btn btn-success btn-xs text-white mb-2 #{'disabled ' if f.approved? }" %>
+              <%= link_to content_tag('i', 'Ejecter', class: "fa fa-close"), eject_app_faithful_path(f), data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs text-white mb-2" %>
               <%= link_to content_tag('i', 'Voir', class: "fa fa-eye"), f, class: 'btn btn-success btn-xs text-white mb-2' %>
               <%= link_to content_tag('i', 'Editer', class: "fa fa-pen"), edit_app_faithful_path(f), class: 'btn btn-primary btn-xs text-white mb-2' %>
               <%= link_to content_tag('i', 'Supprimer', class: "fa fa-trash"), f, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs text-white mb-2' %>

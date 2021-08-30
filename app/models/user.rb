@@ -22,10 +22,19 @@ class User < ApplicationRecord
   has_one :group, class_name: "Group", foreign_key: "admin_id", required: false
   has_and_belongs_to_many :groups, join_table: "faithful_group", foreign_key: "faithful_id"
 
+  # associations de post
+  has_many :posts
+
   has_secure_password
   has_secure_token :token
 
   # accepts_nested_attributes_for :church, update_only: true
+
+
+  # scopes
+  scope :childs, -> { includes(:childs )}
+  # Ex:- scope :active, -> {where(:active => true)}
+
 
   def to_session
     {id: id}

@@ -45,11 +45,20 @@
         </li>
         
       <% if current_user.managed_church? %>
+        <li class="nav-header">EGLISE</li>
         <li class="nav-item">
           <a href="<%=app_children_path%>" data-turbolinks="false" class="nav-link <%= 'active' if content_for?(:page_name) and content_for(:page_name) == 'view.childs' %>">
-            <i class="nav-icon fas fa-th"></i>
+            <i class="nav-icon fas fa-archive"></i>
             <p>
-              Nos églises
+              Nos Stations
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<%=new_app_child_path%>" class="nav-link">
+            <i class="nav-icon fas fa-plus"></i>
+            <p>
+              Ajouter
             </p>
           </a>
         </li>
@@ -57,19 +66,56 @@
 
       
       <% if current_user.managed_child? %>
+        <li class="nav-header">GROUPES</li>
         <li class="nav-item">
           <a href="<%=app_groups_path%>" data-turbolinks="false" class="nav-link <%= "active" if content_for?(:page_name) and content_for(:page_name) == 'view.groups' %>">
-            <i class="nav-icon fas fa-copy"></i>
+            <i class="nav-icon fas fa-users"></i>
             <p>
               Nos Groupes
             </p>
           </a>
         </li>
         <li class="nav-item">
+          <a href="<%=new_app_group_path%>" class="nav-link">
+            <i class="nav-icon fas fa-plus"></i>
+            <p>
+              Ajouter
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-header">FIDELES</li>
+        <li class="nav-item">
           <a href="<%=app_faithfuls_path%>" data-turbolinks="false" class="nav-link <%= "active" if content_for?(:page_name) and content_for(:page_name) == 'view.faithfuls' %>">
-            <i class="nav-icon fas fa-copy"></i>
+            <i class="nav-icon fas fa-database"></i>
             <p>
               Nos fidèles
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<%=new_app_faithful_path%>" class="nav-link">
+            <i class="nav-icon fas fa-plus"></i>
+            <p>
+              Ajouter
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-header">PUBLICATIONS</li>
+        <li class="nav-item">
+          <a href="<%=app_posts_path%>" data-turbolinks="false" class="nav-link <%= "active" if content_for?(:page_name) and content_for(:page_name) == 'view.posts' %>">
+            <i class="nav-icon fas fa-bullhorn"></i>
+            <p>
+              Nos publications
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<%=new_app_post_path%>" class="nav-link">
+            <i class="nav-icon fas fa-plus"></i>
+            <p>
+              Ajouter
             </p>
           </a>
         </li>
