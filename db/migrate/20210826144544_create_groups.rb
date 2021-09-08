@@ -5,7 +5,7 @@ class CreateGroups < ActiveRecord::Migration[5.2]
       t.string :acronym
       t.text :descriptor
       t.references :child, foreign_key: true
-      t.references :admin, references: :users, foreign_key: {to_table: :users}, required: false
+      t.references :manager, references: :users, foreign_key: {to_table: :users}, required: false
 
       t.timestamps
     end

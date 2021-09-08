@@ -19,12 +19,13 @@ class User < ApplicationRecord
   has_one :admin_child, class_name: "Child", foreign_key: "admin_id"
   has_and_belongs_to_many :childs, join_table: "children_faithful", foreign_key: "faithful_id"
   # Association de group
-  has_one :group, class_name: "Group", foreign_key: "admin_id", required: false
+  has_one :group, class_name: "Group", foreign_key: "manager_id", required: false
   has_and_belongs_to_many :groups, join_table: "faithful_group", foreign_key: "faithful_id"
 
   # associations de post
   has_many :posts
 
+  
   has_secure_password
   has_secure_token :token
 
@@ -49,7 +50,7 @@ class User < ApplicationRecord
   end
 
   def managed_child?
-    self.admin_child.present?
+    self.managed_child.present?
   end
 
   def preside_child?

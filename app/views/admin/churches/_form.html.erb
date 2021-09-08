@@ -62,8 +62,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :location_descriptor %>
-    <%= form.text_area :location_descriptor %>
+    <%= form.label :location_description %>
+    <%= form.text_area :location_description %>
   </div>
 
   <div class="field">
@@ -78,7 +78,7 @@
 
   <div class="field">
     <%= form.label :admin_id %>
-    <%= form.select :admin_id, options_for_select(User.all.map{ |u| [u.phone, u.id] }), include_blank: true %>
+    <%= form.select :admin_id, options_for_select(User.all.map{ |u| [u.fullname, u.id] }), include_blank: true %>
   </div>
 
   <div class="actions">

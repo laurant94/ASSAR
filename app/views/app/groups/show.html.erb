@@ -24,7 +24,7 @@
 
 <p>
   <strong>Administrateur:</strong>
-  <%= @group.admin.present? ? "#{@group.admin.fullname}" : "Aucun" %>
+  <%= @group.manager.present? ? "#{@group.manager.fullname}" : "Aucun" %>
 </p>
 
 <!-- Liste des membres du groupe -->

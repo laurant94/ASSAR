@@ -54,7 +54,7 @@ A revoir ❌
   - Supprimer une publication 
   
   - Creer des collectes de fond 
-  - Voir la liste des collectes
+  - Voir la liste des collectes 
   - Voir une collecte
   - Modifier une collecte de fond
   - Supprimer une collecte de fond

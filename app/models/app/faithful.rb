@@ -4,6 +4,6 @@ class App::Faithful < User
 
   private
   def generate_matricule
-    self.update_columns(matricule: "AS-#{id}")
+    self.update_columns(matricule: "#{id}")
   end
 end

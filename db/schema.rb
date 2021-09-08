@@ -10,50 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_30_014621) do
+ActiveRecord::Schema.define(version: 2021_08_30_000246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "active_storage_attachments", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
-    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
-    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
-  end
-
-  create_table "active_storage_blobs", force: :cascade do |t|
-    t.string "key", null: false
-    t.string "filename", null: false
-    t.string "content_type"
-    t.text "metadata"
-    t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
-    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
-  end
-
   create_table "children", force: :cascade do |t|
     t.string "name"
     t.string "acronym"
-    t.string "country"
-    t.string "city"
     t.string "phone"
     t.string "email"
+    t.string "city"
+    t.string "district"
     t.string "location"
-    t.string "location_descriptor"
+    t.string "location_description"
     t.string "post_code"
+    t.integer "count_connected"
+    t.bigint "manager_id"
     t.bigint "president_id"
     t.bigint "vice_president_id"
     t.bigint "secretary_id"
-    t.bigint "manager_id"
     t.bigint "admin_id"
+    t.bigint "church_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "church_id"
     t.index ["admin_id"], name: "index_children_on_admin_id"
     t.index ["church_id"], name: "index_children_on_church_id"
     t.index ["manager_id"], name: "index_children_on_manager_id"
@@ -74,17 +54,17 @@ ActiveRecord::Schema.define(version: 2021_08_30_014621) do
   create_table "churches", force: :cascade do |t|
     t.string "name"
     t.string "acronym"
-    t.integer "category"
     t.string "phone"
+    t.string "email"
+    t.string "country"
+    t.string "city"
+    t.string "post_code"
+    t.string "location"
+    t.text "location_description"
+    t.integer "category"
     t.datetime "foundation_date"
     t.string "agrement"
     t.string "leader_name"
-    t.string "country"
-    t.string "city"
-    t.string "location"
-    t.text "location_descriptor"
-    t.string "email"
-    t.string "post_code"
     t.bigint "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -103,11 +83,11 @@ ActiveRecord::Schema.define(version: 2021_08_30_014621) do
     t.string "acronym"
     t.text "descriptor"
     t.bigint "child_id"
-    t.bigint "admin_id"
+    t.bigint "manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["admin_id"], name: "index_groups_on_admin_id"
     t.index ["child_id"], name: "index_groups_on_child_id"
+    t.index ["manager_id"], name: "index_groups_on_manager_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -122,22 +102,27 @@ ActiveRecord::Schema.define(version: 2021_08_30_014621) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "phone"
-    t.string "email"
     t.string "firstname"
     t.string "lastname"
+    t.string "phone", null: false
+    t.string "email"
     t.string "password_digest"
     t.integer "role", default: 1, null: false
-    t.string "activated", default: "f"
     t.string "token"
+    t.boolean "approved", default: false, null: false
+    t.string "profession"
+    t.string "nationality"
+    t.string "city"
+    t.string "district"
+    t.text "location_description"
+    t.date "birthday"
+    t.string "location"
+    t.text "bio"
+    t.integer "matricule"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "profession"
-    t.boolean "approved"
-    t.string "matricule"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "children", "churches"
   add_foreign_key "children", "users", column: "admin_id"
   add_foreign_key "children", "users", column: "manager_id"
@@ -150,7 +135,7 @@ ActiveRecord::Schema.define(version: 2021_08_30_014621) do
   add_foreign_key "faithful_group", "groups"
   add_foreign_key "faithful_group", "users", column: "faithful_id"
   add_foreign_key "groups", "children"
-  add_foreign_key "groups", "users", column: "admin_id"
+  add_foreign_key "groups", "users", column: "manager_id"
   add_foreign_key "posts", "children"
   add_foreign_key "posts", "users", column: "author_id"
 end

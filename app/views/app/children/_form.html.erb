@@ -13,75 +13,70 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, required: true%>
+    <%= form.text_field :name, class: "form-control", required: true%>
   </div>
 
   <div class="field">
     <%= form.label :acronym %>
-    <%= form.text_field :acronym, required: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country, required: true %>
+    <%= form.text_field :acronym, class: "form-control", required: true %>
   </div>
 
   <div class="field">
     <%= form.label :city %>
-    <%= form.text_field :city, required: true %>
+    <%= form.text_field :city, class: "form-control", required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :district %>
+    <%= form.text_field :district, class: "form-control",required: true %>
   </div>
 
   <div class="field">
     <%= form.label :phone %>
-    <%= form.phone_field :phone, required: true %>
+    <%= form.phone_field :phone, class: "form-control", required: true %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.email_field :email, required: true %>
+    <%= form.email_field :email, class: "form-control", required: true %>
   </div>
 
   <div class="field">
     <%= form.label :location %>
-    <%= form.text_field :location, required: false%>
+    <%= form.text_field :location, class: "form-control", required: false%>
   </div>
 
   <div class="field">
     <%= form.label :location_descriptor %>
-    <%= form.text_field :location_descriptor %>
+    <%= form.text_field :location_descriptor,class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :post_code %>
-    <%= form.number_field :post_code, required: true %>
+    <%= form.number_field :post_code, class: "form-control", required: true %>
   </div>
 
   <div class="field">
     <%= form.label :president_id %>
-    <%= form.number_field :president_id %>
+    <%= form.number_field :president_id, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :vice_president_id %>
-    <%= form.number_field :vice_president_id %>
+    <%= form.number_field :vice_president_id, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :secretary_id %>
-    <%= form.number_field :secretary_id %>
+    <%= form.number_field :secretary_id, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :manager_id %>
-    <%= form.number_field :manager_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :admin_id %>
-    <%= form.number_field :admin_id %>
+    <%= form.number_field :manager_id, class: "form-control" %>
   </div>
 
   <div class="text-right">
-    <%= form.submit 'Sauvegarder', class: "btn btn-primary" %>
+    <%= form.submit 'Sauvegarder', class: "btn btn-primary btn-sm mt-3" %>
   </div>
 <% end %>

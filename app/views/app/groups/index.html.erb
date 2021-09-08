@@ -28,7 +28,7 @@
             <td><%= group.acronym %></td>
             <td><%= group.descriptor %></td>
             <td><%= group.faithfuls.size %></td>
-            <td><%= group.admin.present? ? group.admin.fullname : "Aucun" %></td>
+            <td><%= group.manager.present? ? group.manager.fullname : "Aucun" %></td>
             <td> 
               <%= link_to content_tag('i', 'Voir', class: "fa fa-eye"), app_group_path(group), class: 'btn btn-success btn-xs text-white mb-2' %>
               <%= link_to content_tag('i', 'Editer', class: "fa fa-pen"), edit_app_group_path(group), class: 'btn btn-primary btn-xs text-white mb-2' %>

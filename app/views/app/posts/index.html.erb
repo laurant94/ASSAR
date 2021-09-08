@@ -18,14 +18,14 @@
           <th></th>
         </tr>
       </thead>
-
+      
       <tbody>
         <% @posts.each do |post| %>
           <tr>
             <td><%= post.title.truncate(100) %></td>
             <td><%= post.content.truncate(200) %></td>
             <td><%= post.author.present? ? post.author.fullname : 'Aucun'%></td>
-            <td><%= post.created_at %></td>
+            <td><%=str_time(post.created_at) %></td>
             <td>
               <%= link_to content_tag('i', 'Voir', class: "fa fa-eye"), app_post_path(post), class: 'btn btn-success btn-xs text-white mb-2' %>
               <%= link_to content_tag('i', 'Editer', class: "fa fa-pen"), edit_app_post_path(post), class: 'btn btn-primary btn-xs text-white mb-2' %>

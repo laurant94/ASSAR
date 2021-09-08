@@ -31,8 +31,7 @@
           <th>Président</th>
           <th>Vice président</th>
           <th>Sécretaire</th>
-          <th>Gestionnair</th>
-          <th>Administrateur</th>
+          <th>Gestionnaire</th>
           <th >Actions</th>
         </tr>
       </thead>
@@ -47,10 +46,9 @@
             <td><%= app_child.post_code %></td>
             <td><%= app_child.faithfuls.size %></td>
             <td><%= "#{app_child.president.fullname}" %></td>
-            <td><%= "#{app_child.vice_president.fullname} " %></td>
-            <td><%= "#{app_child.secretary.fullname} " %></td>
+            <td><%= "#{app_child.vice_president ? app_child.vice_president.fullname : "Aucun"} " %></td>
+            <td><%= "#{app_child.secretary ? app_child.secretary.fullname : "Aucun"} " %></td>
             <td><%= "#{app_child.manager.fullname}" %></td>
-            <td><%= "#{app_child.admin.fullname} " %></td>
             <td>
               <%= link_to content_tag('i', 'Voir', class: "fa fa-eye"), app_child, class: 'btn btn-success btn-xs text-white' %>
               <%= link_to content_tag('i', 'Editer', class: "fa fa-pen"), edit_app_child_path(app_child), class: 'btn btn-primary btn-xs text-white' %>
