@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_30_000246) do
+ActiveRecord::Schema.define(version: 2021_09_09_024419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,8 +95,10 @@ ActiveRecord::Schema.define(version: 2021_08_30_000246) do
     t.text "content"
     t.bigint "author_id"
     t.bigint "child_id"
+    t.text "thumb"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "mark", default: 1
     t.index ["author_id"], name: "index_posts_on_author_id"
     t.index ["child_id"], name: "index_posts_on_child_id"
   end
@@ -119,6 +121,7 @@ ActiveRecord::Schema.define(version: 2021_08_30_000246) do
     t.string "location"
     t.text "bio"
     t.integer "matricule"
+    t.text "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

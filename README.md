@@ -42,6 +42,7 @@ A revoir ❌
   - Supprimer un fidèle ✅
   - Approuver un fidele ✅
   - Rejeter un fidele ✅
+  - Voir la liste des groupes d'un fidèle ✅
 
   - Creer des publications ✅
   - Voir la liste des publications ✅

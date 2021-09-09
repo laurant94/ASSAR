@@ -18,6 +18,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :location
       t.text :bio
       t.integer :matricule
+      t.text :avatar
       
       t.timestamps
     end

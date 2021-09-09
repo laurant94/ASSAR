@@ -20,6 +20,13 @@
     <%= form.label :content %>
     <%= form.text_area :content, class: "form-control" %>
   </div>
+
+  <div class="field">
+    <%= form.label :thumb, "Image en avant" %>
+    <%= form.file_field :thumb, class: "form-control" %>
+    <%= form.hidden_field :thumb_cache %>
+  </div>
+
   <div class="text-right mt-3">
     <%= form.submit "Sauvegarder", class: "btn btn-primary text-white" %>
   </div>
