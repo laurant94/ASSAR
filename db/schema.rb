@@ -99,6 +99,12 @@ ActiveRecord::Schema.define(version: 2021_09_09_024419) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "mark", default: 1
+    t.integer "statut", default: 1
+    t.integer "state", default: 1
+    t.datetime "published_at"
+    t.datetime "unpublished_at"
+    t.datetime "marked_to"
+    t.datetime "marke_end_to"
     t.index ["author_id"], name: "index_posts_on_author_id"
     t.index ["child_id"], name: "index_posts_on_child_id"
   end
