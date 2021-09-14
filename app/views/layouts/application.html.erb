@@ -18,45 +18,47 @@
 
     
     <% unless content_for?(:noapp)   %>
-       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-      <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-      <link rel="stylesheet" href="<%=root_url%>plugins/fontawesome-free/css/all.min.css">
-      <link rel="stylesheet" href="<%=root_url%>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-      <link rel="stylesheet" href="<%=root_url%>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-      <link rel="stylesheet" href="<%=root_url%>plugins/jqvmap/jqvmap.min.css">
-      <link rel="stylesheet" href="<%=root_url%>dist/css/adminlte.min.css">
-      <link rel="stylesheet" href="<%=root_url%>plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
-      <link rel="stylesheet" href="<%=root_url%>plugins/daterangepicker/daterangepicker.css">
-      <link rel="stylesheet" href="<%=root_url%>plugins/summernote/summernote-bs4.min.css">
-      <link rel="stylesheet" href="<%=root_url%>plugins/toastr/toastr.min.css">
+      <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" %>
+      <%= stylesheet_link_tag "https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" %>
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/fontawesome-free/css/all.min.css" %>
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css" %>
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/icheck-bootstrap/icheck-bootstrap.min.css" %>
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/jqvmap/jqvmap.min.css" %>
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/dist/css/adminlte.min.css" %>
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css" %>
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/daterangepicker/daterangepicker.css" %>
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/summernote/summernote-bs4.min.css" %>
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/toastr/toastr.min.css" %>
 
-      <script src="<%=root_url%>plugins/jquery/jquery.min.js"></script>
-      <script src="<%=root_url%>plugins/jquery-ui/jquery-ui.min.js"></script>
+
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/jquery/jquery.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/jquery-ui/jquery-ui.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/bootstrap/js/bootstrap.bundle.min.js" %>
+      <!-- ChartJS -->
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/chart.js/Chart.min.js" %>
+      <!-- Sparkline -->
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/sparklines/sparkline.js" %>
+      <!-- JQVMap -->
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/jqvmap/jquery.vmap.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/jqvmap/maps/jquery.vmap.usa.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/jquery-knob/jquery.knob.min.js" %>
+      <!-- jQuery Knob Chart -->
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/moment/moment.min.js" %>
+      <!-- daterangepicker -->
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/daterangepicker/daterangepicker.js" %>
+      <!-- Tempusdominus Bootstrap 4 -->
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js" %>
+      <!-- Summernote -->
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/summernote/summernote-bs4.min.js" %>
+      <!-- overlayScrollbars -->
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/toastr/toastr.min.js" %>
+      <!-- AdminLTE App -->
+      <%= javascript_include_tag asset_url "/templates/adminLte/dist/js/adminlte.js" %>
+
       <script>
         $.widget.bridge('uibutton', $.ui.button)
       </script>
-      <script src="<%=root_url%>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <!-- ChartJS -->
-      <script src="<%=root_url%>plugins/chart.js/Chart.min.js"></script>
-      <!-- Sparkline -->
-      <script src="<%=root_url%>plugins/sparklines/sparkline.js"></script> 
-      <!-- JQVMap -->
-      <script src="<%=root_url%>plugins/jqvmap/jquery.vmap.min.js"></script>
-      <script src="<%=root_url%>plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-      <!-- jQuery Knob Chart -->
-      <script src="<%=root_url%>plugins/jquery-knob/jquery.knob.min.js"></script>
-      <!-- daterangepicker -->
-      <script src="<%=root_url%>plugins/moment/moment.min.js"></script>
-      <script src="<%=root_url%>plugins/daterangepicker/daterangepicker.js"></script>
-      <!-- Tempusdominus Bootstrap 4 -->
-      <script src="<%=root_url%>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-      <!-- Summernote -->
-      <script src="<%=root_url%>plugins/summernote/summernote-bs4.min.js"></script>
-      <!-- overlayScrollbars -->
-      <script src="<%=root_url%>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-      <script src="<%=root_url%>plugins/toastr/toastr.min.js"></script>
-      <!-- AdminLTE App -->
-      <script src="<%=root_url%>dist/js/adminlte.js"></script>
       <!-- AdminLTE for demo purposes -->
       <!-- <script src="<%=root_url%>dist/js/demo.js"></script> -->
       <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

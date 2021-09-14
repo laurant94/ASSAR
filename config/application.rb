@@ -13,7 +13,7 @@ module Assa
 
 
     config.site = {
-      name: "AssaR"
+      name: "Assa"
     }
     config.i18n.default_locale = :fr
     config.time_zone = 'Africa/Porto-Novo'
