@@ -11,7 +11,7 @@ class User < ApplicationRecord
   #   format: { with: /\A[a-zA-Z0-9_]{2,20}\z/, message: "ne doit contenir que des eractères alphanumeriques" }
   validates :phone, presence: true, uniqueness: { case_sensitive: true }
 
-  has_one :managed_church, class_name: "Church", foreign_key: "admin_id"
+  has_one :managed_church, class_name: "Church", foreign_key: "manager_id"
   has_one :preside_child, class_name: "Child", foreign_key: "president_id"
   has_one :vice_preside_child, class_name: "Child", foreign_key: "vice_president_id"
   has_one :secretaried_child, class_name: "Child", foreign_key: "secretary_id"

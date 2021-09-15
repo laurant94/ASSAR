@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_024419) do
+ActiveRecord::Schema.define(version: 2021_08_30_000246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,14 +61,15 @@ ActiveRecord::Schema.define(version: 2021_09_09_024419) do
     t.string "post_code"
     t.string "location"
     t.text "location_description"
+    t.boolean "approved"
     t.integer "category"
-    t.datetime "foundation_date"
+    t.date "foundation_date"
     t.string "agrement"
     t.string "leader_name"
-    t.bigint "admin_id"
+    t.bigint "manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["admin_id"], name: "index_churches_on_admin_id"
+    t.index ["manager_id"], name: "index_churches_on_manager_id"
   end
 
   create_table "faithful_group", id: false, force: :cascade do |t|
@@ -81,7 +82,7 @@ ActiveRecord::Schema.define(version: 2021_09_09_024419) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "acronym"
-    t.text "descriptor"
+    t.text "description"
     t.bigint "child_id"
     t.bigint "manager_id"
     t.datetime "created_at", null: false
@@ -93,18 +94,21 @@ ActiveRecord::Schema.define(version: 2021_09_09_024419) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.bigint "author_id"
-    t.bigint "child_id"
     t.text "thumb"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "mark", default: 1
-    t.integer "statut", default: 1
-    t.integer "state", default: 1
+    t.integer "mark", default: 1, null: false
+    t.integer "statut", default: 1, null: false
+    t.integer "state", default: 1, null: false
     t.datetime "published_at"
     t.datetime "unpublished_at"
     t.datetime "marked_to"
-    t.datetime "marke_end_to"
+    t.datetime "unmarked_to"
+    t.integer "searched_amount", default: 0, null: false
+    t.integer "find_amount", default: 0, null: false
+    t.integer "remaining_amount", default: 0, null: false
+    t.bigint "author_id"
+    t.bigint "child_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["author_id"], name: "index_posts_on_author_id"
     t.index ["child_id"], name: "index_posts_on_child_id"
   end
@@ -140,7 +144,7 @@ ActiveRecord::Schema.define(version: 2021_09_09_024419) do
   add_foreign_key "children", "users", column: "vice_president_id"
   add_foreign_key "children_faithful", "children"
   add_foreign_key "children_faithful", "users", column: "faithful_id"
-  add_foreign_key "churches", "users", column: "admin_id"
+  add_foreign_key "churches", "users", column: "manager_id"
   add_foreign_key "faithful_group", "groups"
   add_foreign_key "faithful_group", "users", column: "faithful_id"
   add_foreign_key "groups", "children"

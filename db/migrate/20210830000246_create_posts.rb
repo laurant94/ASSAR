@@ -3,10 +3,21 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     create_table :posts do |t|
       t.string :title
       t.text :content
+      t.text :thumb
+      t.integer :mark, null: false, default: 1
+      t.integer :statut, null: false, default: 1 #1: public 
+      t.integer :state, null: false, default: 1
+      t.datetime :published_at
+      t.datetime :unpublished_at
+      t.datetime :marked_to
+      t.datetime :unmarked_to
+      t.integer :searched_amount, null: false, default: 0
+      t.integer :find_amount, null: false, default: 0
+      t.integer :remaining_amount, null: false, default: 0
+      
       t.references :author, references: :users, foreign_key: {to_table: :users}
       t.references :child, foreign_key: true
-      # t.integer :type, null: false, default: 1
-      t.text :thumb
+      
 
       t.timestamps
     end

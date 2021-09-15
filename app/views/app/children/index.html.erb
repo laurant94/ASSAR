@@ -45,9 +45,9 @@
             <td><%= app_child.email %></td>
             <td><%= app_child.post_code %></td>
             <td><%= app_child.faithfuls.size %></td>
-            <td><%= "#{app_child.president.fullname}" %></td>
-            <td><%= "#{app_child.vice_president ? app_child.vice_president.fullname : "Aucun"} " %></td>
-            <td><%= "#{app_child.secretary ? app_child.secretary.fullname : "Aucun"} " %></td>
+            <td><%= "#{app_child.president.present? ? app_child.president.fullname : "Aucun"}" %></td>
+            <td><%= "#{app_child.vice_president.present? ? app_child.vice_president.fullname : "Aucun"} " %></td>
+            <td><%= "#{app_child.secretary.present? ? app_child.secretary.fullname : "Aucun"} " %></td>
             <td><%= "#{app_child.manager.fullname}" %></td>
             <td>
               <%= link_to content_tag('i', 'Voir', class: "fa fa-eye"), app_child, class: 'btn btn-success btn-xs text-white' %>
