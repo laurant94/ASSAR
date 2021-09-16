@@ -5,13 +5,13 @@
         <div class="card mb-2 bg-gradient">
           <img class="card-img-top" src="<%= @event.thumb ? asset_url('/templates/adminLte/img/event.jpeg') : @event.thumb.thumbnail.url  %>" alt="Dist Photo 1">
           <div class="card-img-overlay d-flex flex-column justify-content-end">
-            <h5 class="card-title text-primary text-white"> <%= @post.title %> </h5>
+            <h5 class="card-title text-primary text-white"> <%= @event.title %> </h5>
             <a href="#" class="text-white"> </a>
-            <small class="card-text text-white pb-2 pt-1 text-right"><%= "Par #{@post.author.fullname} #{str_time(@post.created_at)}" %></small>
+            <small class="card-text text-white pb-2 pt-1 text-right"><%= "Par #{@event.author.fullname} #{str_time(@event.created_at)}" %></small>
           </div>
         </div>
         <div class="card-body">
-          <%= markdown(@post.content) %>
+          <%= markdown(@event.content) %>
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
 </div>
 
 
-<%= link_to 'Edit', edit_app_post_path(@post) %> |
-<%= link_to 'Back', app_posts_path %>
+<%= link_to 'Edit', edit_app_event_path(@event) %> |
+<%= link_to 'Back', app_events_path %>
 
 <% content_for :page_name, 'view.posts' %>

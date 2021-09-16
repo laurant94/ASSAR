@@ -3,7 +3,7 @@ class App::PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
-    @posts = current_user.managed_child.posts
+    @posts = current_user.managed_child.posts.mark_post
   end
 
   # GET /posts/1 or /posts/1.json
@@ -66,6 +66,7 @@ class App::PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:app_post).permit(:title, :content, :thumb )
+      params.require(:app_post).permit(:title, :content, 
+        :thumb, :thumb_cache )
     end
 end

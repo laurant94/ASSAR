@@ -119,6 +119,42 @@
             </p>
           </a>
         </li>
+
+        <li class="nav-header">EVENEMENTS</li>
+        <li class="nav-item">
+          <a href="<%=app_events_path%>" data-turbolinks="false" class="nav-link <%= "active" if content_for?(:page_name) and content_for(:page_name) == 'view.events' %>">
+            <i class="nav-icon fas fa-calendar"></i>
+            <p>
+              Nos évenements
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<%=new_app_event_path%>" class="nav-link">
+            <i class="nav-icon fas fa-plus"></i>
+            <p>
+              Ajouter
+            </p>
+          </a>
+        </li>
+
+        <li class="nav-header">COLLECTES</li>
+        <li class="nav-item">
+          <a href="<%=app_collects_path%>" data-turbolinks="false" class="nav-link <%= "active" if content_for?(:page_name) and content_for(:page_name) == 'view.events' %>">
+            <i class="nav-icon fas fa-calendar"></i>
+            <p>
+              Collèctes
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="<%=new_app_collect_path%>" class="nav-link">
+            <i class="nav-icon fas fa-plus"></i>
+            <p>
+              Ajouter
+            </p>
+          </a>
+        </li>
       <% end %>
       
         

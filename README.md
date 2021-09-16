@@ -49,16 +49,22 @@ A revoir ❌
   - Voir une publication ✅
   - Modifier le statut d'une publication
   - Ajouter des tags a une publication
-  - Voir le nombre de commentaite sur une publication
-  - Repondre a une publiation (counter cache)
+  - Voir le nombre de commentaite sur une publication(counter cache)
+  - Repondre a une publiation 
   - Voir le nombre de *j'aime* sur une publication (couter cache)
   - Supprimer une publication 
   
   - Creer des collectes de fond 
   - Voir la liste des collectes 
-  - Voir une collecte
-  - Modifier une collecte de fond
-  - Supprimer une collecte de fond
+  - Voir une collecte 
+  - Modifier une collecte de fond 
+  - Supprimer une collecte de fond 
+
+  - Creer des evènements 
+  - Voir la liste des évènements 
+  - Voir un evenement
+  - Modifier un evenement
+  - Supprimer un evenement
 
   - Creer un groupe ✅
   - Voir la liste des groupes ✅

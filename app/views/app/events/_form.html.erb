@@ -1,10 +1,10 @@
-<%= form_for post do |form| %>
-  <% if post.errors.any? %>
+<%= form_for event do |form| %>
+  <% if event.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
       <ul>
-      <% post.errors.full_messages.each do |message| %>
+      <% event.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -21,15 +21,6 @@
     <%= form.text_area :content, class: "form-control", required: true %>
   </div>
 
-  <div class="field">
-    <%= form.label :thumb, "Image en avant" %>
-    <%= form.file_field :thumb, class: "form-control", required: false %>
-    <%= form.hidden_field :thumb_cache %>
-  </div>
-
-  <div class="mt-2 ">
-    <%= image_tag post.thumb.thumb.url, alt: 'thumbnail' if post.thumb.present? %>
-  </div>
 
   <div class="text-right mt-3">
     <%= form.submit "Sauvegarder", class: "btn btn-primary text-white" %>

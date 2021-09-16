@@ -1,0 +1,25 @@
+<div class="card card-success">
+  <div class="card-body">
+    <div class="row">
+      <div class="offset-lg-1 offset-xl-2 col-md-12 col-lg-10 col-xl-8">
+        <div class="card mb-2 bg-gradient">
+          <img class="card-img-top" src="<%= @collect.thumb ? asset_url('/templates/adminLte/img/collect.png') : @collect.thumb.thumbnail.url  %>" alt="Dist Photo 1">
+          <div class="card-img-overlay d-flex flex-column justify-content-end">
+            <h5 class="card-title text-primary text-white"> <%= @collect.title %> </h5>
+            <a href="#" class="text-white"> </a>
+            <small class="card-text text-white pb-2 pt-1 text-right"><%= "Par #{@collect.author.fullname} #{str_time(@collect.created_at)}" %></small>
+          </div>
+        </div>
+        <div class="card-body">
+          <%= markdown(@collect.content) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%= link_to 'Edit', edit_app_collect_path(@collect) %> |
+<%= link_to 'Back', app_collects_path %>
+
+<% content_for :page_name, 'view.posts' %>
