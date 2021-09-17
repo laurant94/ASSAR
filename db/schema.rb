@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_30_000246) do
+ActiveRecord::Schema.define(version: 2021_09_16_163526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,30 @@ ActiveRecord::Schema.define(version: 2021_08_30_000246) do
     t.index ["child_id"], name: "index_posts_on_child_id"
   end
 
+  create_table "settings", force: :cascade do |t|
+    t.bigint "church_id"
+    t.text "app_name", default: "Assa"
+    t.boolean "navbar_border", default: false
+    t.boolean "body_small_text", default: false
+    t.boolean "navbar_small_text", default: false
+    t.boolean "sidebar_small_text", default: false
+    t.boolean "footer_small_text", default: false
+    t.boolean "sidebar_nav_flat_style", default: false
+    t.boolean "sidebar_nav_legacy_style", default: false
+    t.boolean "sidebar_nav_compact", default: false
+    t.boolean "sidebar_nav_child_indent", default: false
+    t.boolean "sidebar_nav_hide_on_collapse", default: false
+    t.boolean "sidebar_disable_auto_expand", default: false
+    t.boolean "brand_small_text", default: false
+    t.text "navbar_color", default: "navbar-white"
+    t.text "accent_color", default: " "
+    t.text "sidebar_color", default: "sidebar-dark-primary"
+    t.boolean "dark_navbar", default: false
+    t.boolean "dark_sidebar", default: false
+    t.text "brand_logo_color", default: "primary"
+    t.index ["church_id"], name: "index_settings_on_church_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
@@ -151,4 +175,5 @@ ActiveRecord::Schema.define(version: 2021_08_30_000246) do
   add_foreign_key "groups", "users", column: "manager_id"
   add_foreign_key "posts", "children"
   add_foreign_key "posts", "users", column: "author_id"
+  add_foreign_key "settings", "churches"
 end

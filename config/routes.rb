@@ -12,8 +12,10 @@ Rails.application.routes.draw do
     post 'logout', to: "sessions#destroy", as: :logout
 
     get 'dashboard', to: "dashboard#index", as: :dashboard
-    
+    get 'settings', to: 'settings#edit', as: :settings
+    patch 'settings', to: 'settings#update'
     resources :posts, :events, :collects
+    
     
     resources :children
     # Group and members

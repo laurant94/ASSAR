@@ -34,6 +34,7 @@ church = Church.create(
   leader_name: "Lucien Bétérav",
   manager_id: user.id
 )
+church.setting = Setting.new
 
 child = Child.create(
   name: "Mercerie des garçons kokeluches Cotonou",

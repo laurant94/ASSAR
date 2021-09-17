@@ -157,6 +157,19 @@
         </li>
       <% end %>
       
+
+      <!-- Manager d'eglise -->
+      <% if current_user.managed_church? %>
+        <li class="nav-header">CONFIGURATIONS</li>
+        <li class="nav-item">
+          <a href="<%=app_settings_path%>" class="nav-link <%= 'active' if content_for?(:page_name) and content_for(:page_name) == 'view.settings' %>">
+            <i class="nav-icon fas fa-cog"></i>
+            <p>
+              Configurations
+            </p>
+          </a>
+        </li>
+      <% end %>
         
         
         

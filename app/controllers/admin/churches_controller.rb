@@ -22,6 +22,7 @@ class Admin::ChurchesController < ApplicationController
   # POST /admin/churches or /admin/churches.json
   def create
     @admin_church = Admin::Church.new(admin_church_params)
+    @admin_church.setting = Setting.new
 
     respond_to do |format|
       if @admin_church.save
