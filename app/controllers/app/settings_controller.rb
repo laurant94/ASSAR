@@ -17,6 +17,7 @@ class App::SettingsController < ApplicationController
 
   def setting_params
     params.require(:setting).permit(:app_name, :navbar_border, 
+    :devise,
     :body_small_text, :navbar_small_text, :sidebar_small_text,
     :footer_small_text, :sidebar_nav_flat_style, :sidebar_nav_legacy_style,
     :sidebar_nav_compact, :sidebar_nav_child_indent, :sidebar_nav_hide_on_collapse,

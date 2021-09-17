@@ -12,10 +12,11 @@
       <thead>
         <tr>
           <th>Titre</th>
-          <th>Contenue</th>
-          <th>Auteur</th>
+          <th>Montant rechercher</th>
+          <th>Montant trouvé</th>
+          <th>Montant restant</th>
           <th>Créé</th>
-          <th></th>
+          <th>Actions</th>
         </tr>
       </thead>
       
@@ -23,8 +24,9 @@
         <% @collects.each do |collect| %>
           <tr>
             <td><%= collect.title.truncate(100) %></td>
-            <td><%= collect.content.truncate(200) %></td>
-            <td><%= collect.author.present? ? collect.author.fullname : 'Aucun'%></td>
+            <td> <%= collect.searched_amount %> </td>
+            <td> <%= collect.find_amount %> </td>
+            <td> <%= collect.remaining_amount %> </td>
             <td><%=str_time(collect.created_at) %></td>
             <td>
               <%= link_to content_tag('i', 'Voir', class: "fa fa-eye"), app_collect_path(collect), class: 'btn btn-success btn-xs text-white mb-2' %>
@@ -40,4 +42,4 @@
 <br>
 
 
-<% content_for :page_name, 'view.posts' %>
+<% content_for :page_name, 'view.collects' %>

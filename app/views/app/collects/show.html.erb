@@ -12,6 +12,17 @@
         </div>
         <div class="card-body">
           <%= markdown(@collect.content) %>
+          <div class="row">
+            <div class="col">
+              <%= content_tag('p', "Montant recherché: #{@collect.searched_amount}") %>
+            </div>
+            <div class="col">
+              <%= content_tag('p', "Montant trouvé: #{@collect.find_amount}") %>
+            </div>
+            <div class="col">
+              <%= content_tag('p', "Montant restant: #{@collect.remaining_amount}") %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

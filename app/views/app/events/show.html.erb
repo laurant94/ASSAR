@@ -7,10 +7,18 @@
           <div class="card-img-overlay d-flex flex-column justify-content-end">
             <h5 class="card-title text-primary text-white"> <%= @event.title %> </h5>
             <a href="#" class="text-white"> </a>
-            <small class="card-text text-white pb-2 pt-1 text-right"><%= "Par #{@event.author.fullname} #{str_time(@event.created_at)}" %></small>
+            <small class="card-text text-white pb-2 pt-1 text-right text-sm"><%= "Par #{@event.author.fullname} #{str_time(@event.created_at)}" %></small>
           </div>
         </div>
         <div class="card-body">
+          <div class="row">
+            <div class="col text-sm">
+              <%= content_tag('h6', "Debut: #{@event.marked_to.strftime("%d %b %Y")}", class: "text-sm") %>
+            </div>
+            <div class="col text-right">
+              <%= content_tag('h6', "Fin: #{@event.unmarked_to.strftime("%d %b %Y")}", class: "text-sm") %>
+            </div>
+          </div>
           <%= markdown(@event.content) %>
         </div>
       </div>

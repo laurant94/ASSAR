@@ -3,6 +3,7 @@ class CreateSettings < ActiveRecord::Migration[5.2]
     create_table :settings do |t|
       t.references :church, foreign_key: true
       t.text :app_name, default: Rails.application.config.site[:name]
+      t.text :devise, default: "F cfa"
       t.boolean :navbar_border, default: false
       t.boolean :body_small_text, default: false
       t.boolean :navbar_small_text, default: false

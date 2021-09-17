@@ -59,6 +59,7 @@ class App::CollectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def collect_params
-      params.require(:app_collect).permit(:title, :content, :marked_to )
+      params.require(:app_collect)
+      .permit(:title, :content, :searched_amount )
     end
 end

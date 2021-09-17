@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 2021_09_16_163526) do
   create_table "settings", force: :cascade do |t|
     t.bigint "church_id"
     t.text "app_name", default: "Assa"
+    t.text "devise", default: "F cfa"
     t.boolean "navbar_border", default: false
     t.boolean "body_small_text", default: false
     t.boolean "navbar_small_text", default: false

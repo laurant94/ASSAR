@@ -15,6 +15,8 @@
           <th>Contenue</th>
           <th>Auteur</th>
           <th>Créé</th>
+          <th>Date d'execution</th>
+          <th>Actions</th>
           <th></th>
         </tr>
       </thead>
@@ -26,6 +28,10 @@
             <td><%= event.content.truncate(200) %></td>
             <td><%= event.author.present? ? event.author.fullname : 'Aucun'%></td>
             <td><%=str_time(event.created_at) %></td>
+            <td>
+              <%= "#{event.marked_to.strftime("%d %b %Y")} 
+              au 
+              #{event.unmarked_to.strftime("%d %b %Y")}" %></td>
             <td>
               <%= link_to content_tag('i', 'Voir', class: "fa fa-eye"), app_event_path(event), class: 'btn btn-success btn-xs text-white mb-2' %>
               <%= link_to content_tag('i', 'Editer', class: "fa fa-pen"), edit_app_event_path(event), class: 'btn btn-primary btn-xs text-white mb-2' %>
@@ -40,4 +46,4 @@
 <br>
 
 
-<% content_for :page_name, 'view.posts' %>
+<% content_for :page_name, 'view.events' %>

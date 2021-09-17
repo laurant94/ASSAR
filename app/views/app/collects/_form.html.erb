@@ -21,6 +21,11 @@
     <%= form.text_area :content, class: "form-control", required: true %>
   </div>
 
+  <div class="field">
+    <%= form.label :searched_amount %>
+    <%= form.number_field :searched_amount, class: "form-control", required: true %>
+  </div>
+
 
   <div class="text-right mt-3">
     <%= form.submit "Sauvegarder", class: "btn btn-primary text-white" %>

@@ -16,6 +16,17 @@
     <%= form.text_field :title, class: "form-control", required: true %>
   </div>
 
+  <div class="row">
+    <div class="col-md-6 col-sm-12 form-group">
+      <%= form.label :marked_to, "Date de l'évenement" %>
+      <%= form.datetime_field :marked_to, class: "form-control" %>
+    </div>
+    <div class="col-md-6 col-sm-12 form-group">
+      <%= form.label :unmarked_to, "Date de fin" %>
+      <%= form.datetime_field :unmarked_to, class: "form-control" %>
+    </div>
+  </div>
+
   <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content, class: "form-control", required: true %>
