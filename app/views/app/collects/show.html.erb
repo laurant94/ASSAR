@@ -23,12 +23,87 @@
               <%= content_tag('p', "Montant restant: #{@collect.remaining_amount}") %>
             </div>
           </div>
+          <!-- liste des contributions -->
+          <div class="row">
+            <div class="col-12 text-center">
+              <h5>Liste des contributeurs</h5>
+            </div>
+            <div class="col-12">
+              <table class="table table-bordered table-hover" id="contributionList">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Fidèle</th>
+                    <th>Participation</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <!-- Affichage aucun participant -->
+                <% if @collect.contributions.empty? %>
+                  <tr >
+                    <td colspan="4" class="text-center h5">Aucun participant</td>
+                  </tr>
+                <% end %>
+                
+                <% @collect.contributions.each do |contribution| %>
+                  <tr>
+                    <td> <%= contribution.id %> </td>
+                    <td> <%= contribution.faithful.fullname %> </td>
+                    <td> <%= contribution.amount %> </td>
+                    <td> <%= str_time(contribution.created_at) %> </td>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
+
+
+<% content_for :styles do%>
+   <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" %>
+  <!-- Font Awesome -->
+  <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/fontawesome-free/css/all.min.css" %>
+  <!-- DataTables -->
+  <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" %>
+  <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" %>
+  <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css" %>
+  <!-- Theme style -->
+<% end %>
+
+
+<% content_for :script do%>
+  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables/jquery.dataTables.min.js" %>
+  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js" %>
+  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-responsive/js/dataTables.responsive.min.js" %>
+  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js" %>
+  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/dataTables.buttons.min.js" %>
+  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js" %>
+  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/jszip/jszip.min.js" %>
+  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/pdfmake/pdfmake.min.js" %>
+  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/pdfmake/vfs_fonts.js" %>
+  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/buttons.html5.min.js" %>
+  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/buttons.print.min.js" %>
+  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/buttons.colVis.min.js" %>
+
+  <script>
+    $('#contributionList').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  </script>
+<% end %>
 
 <%= link_to 'Edit', edit_app_collect_path(@collect) %> |
 <%= link_to 'Back', app_collects_path %>

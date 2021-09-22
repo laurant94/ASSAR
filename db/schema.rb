@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_16_163526) do
+ActiveRecord::Schema.define(version: 2021_09_20_205319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,27 @@ ActiveRecord::Schema.define(version: 2021_09_16_163526) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["manager_id"], name: "index_churches_on_manager_id"
+  end
+
+  create_table "connecteds", force: :cascade do |t|
+    t.bigint "parent_id"
+    t.bigint "auth_id"
+    t.boolean "approved", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["auth_id"], name: "index_connecteds_on_auth_id"
+    t.index ["parent_id"], name: "index_connecteds_on_parent_id"
+  end
+
+  create_table "contributions", force: :cascade do |t|
+    t.bigint "faithful_id"
+    t.bigint "post_id"
+    t.string "mark", default: "1"
+    t.integer "amount"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["faithful_id"], name: "index_contributions_on_faithful_id"
+    t.index ["post_id"], name: "index_contributions_on_post_id"
   end
 
   create_table "faithful_group", id: false, force: :cascade do |t|
@@ -170,6 +191,10 @@ ActiveRecord::Schema.define(version: 2021_09_16_163526) do
   add_foreign_key "children_faithful", "children"
   add_foreign_key "children_faithful", "users", column: "faithful_id"
   add_foreign_key "churches", "users", column: "manager_id"
+  add_foreign_key "connecteds", "children", column: "auth_id"
+  add_foreign_key "connecteds", "children", column: "parent_id"
+  add_foreign_key "contributions", "posts"
+  add_foreign_key "contributions", "users", column: "faithful_id"
   add_foreign_key "faithful_group", "groups"
   add_foreign_key "faithful_group", "users", column: "faithful_id"
   add_foreign_key "groups", "children"

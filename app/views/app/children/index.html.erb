@@ -48,11 +48,11 @@
             <td><%= "#{app_child.president.present? ? app_child.president.fullname : "Aucun"}" %></td>
             <td><%= "#{app_child.vice_president.present? ? app_child.vice_president.fullname : "Aucun"} " %></td>
             <td><%= "#{app_child.secretary.present? ? app_child.secretary.fullname : "Aucun"} " %></td>
-            <td><%= "#{app_child.manager.fullname}" %></td>
+            <td><%= "#{app_child.manager ? app_child.manager.fullname : 'Aucun'}" %></td>
             <td>
-              <%= link_to content_tag('i', 'Voir', class: "fa fa-eye"), app_child, class: 'btn btn-success btn-xs text-white' %>
+              <%= link_to content_tag('i', 'Voir', class: "fa fa-eye"), app_child_path(app_child), class: 'btn btn-success btn-xs text-white' %>
               <%= link_to content_tag('i', 'Editer', class: "fa fa-pen"), edit_app_child_path(app_child), class: 'btn btn-primary btn-xs text-white' %>
-              <%= link_to content_tag('i', 'Supprimer', class: "fa fa-trash"), app_child, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs text-white' %>
+              <%= link_to content_tag('i', 'Supprimer', class: "fa fa-trash"), app_child_path(app_child), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs text-white' %>
               
             </td>
           </tr>
@@ -69,31 +69,11 @@
 <% content_for :page_name, 'view.childs' %>
 
 <% content_for :styles do%>
-  <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" %>
-  <!-- Font Awesome -->
-  <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/fontawesome-free/css/all.min.css" %>
-  <!-- DataTables -->
-  <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" %>
-  <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" %>
-  <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/plugins/datatables-buttons/css/buttons.bootstrap4.min.css" %>
-  <!-- Theme style -->
+  
 <% end %>
 
 
 <% content_for :script do%>
-  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables/jquery.dataTables.min.js" %>
-  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js" %>
-  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-responsive/js/dataTables.responsive.min.js" %>
-  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js" %>
-  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/dataTables.buttons.min.js" %>
-  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js" %>
-  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/jszip/jszip.min.js" %>
-  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/pdfmake/pdfmake.min.js" %>
-  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/pdfmake/vfs_fonts.js" %>
-  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/buttons.html5.min.js" %>
-  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/buttons.print.min.js" %>
-  <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/buttons.colVis.min.js" %>
-
   <script>
     $('#childrenList').DataTable({
       "paging": true,

@@ -3,7 +3,7 @@ class App::ChildrenController < ApplicationController
 
   # GET /app/children or /app/children.json
   def index
-    @app_children = App::Child.all
+    @app_children = current_user.managed_church.childs
   end
 
   # GET /app/children/1 or /app/children/1.json

@@ -2,7 +2,8 @@ class App::CollectsController < ApplicationController
   before_action :set_collect, only: %i[ show edit update destroy ]
 
   def index
-    @collects = current_user.managed_child.posts.mark_collect
+    @collects = current_user.managed_child.posts
+    .mark_collect.includes(:contributions)
   end
 
   def show

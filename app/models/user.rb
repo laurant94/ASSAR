@@ -25,6 +25,10 @@ class User < ApplicationRecord
   # associations de post
   has_many :posts
 
+  #association contribution
+  has_many :contributions, class_name: "Contribution", foreign_key: "contribution_id"
+  has_many :posts, through: :contributions
+
   
   has_secure_password
   has_secure_token :token

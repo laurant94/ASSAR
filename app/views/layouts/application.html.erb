@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <meta content="" name="description">
     <meta content="" name="keywords">
-
+    <%= component 'pwa/manifest', url: request.base_url %>
     <title>  <%= content_for?(:title) ? content_for(:title) : Rails.application.config.site[:name] %> </title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -29,6 +29,13 @@
       <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/daterangepicker/daterangepicker.css" %>
       <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/summernote/summernote-bs4.min.css" %>
       <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/toastr/toastr.min.css" %>
+
+      <!-- Font Awesome -->
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/fontawesome-free/css/all.min.css" %>
+      <!-- DataTables -->
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css" %>
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css" %>
+      <%= stylesheet_link_tag asset_url "/templates/adminLte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css" %>
 
 
       <%= javascript_include_tag asset_url "/templates/adminLte/plugins/jquery/jquery.min.js" %>
@@ -55,6 +62,20 @@
       <%= javascript_include_tag asset_url "/templates/adminLte/plugins/toastr/toastr.min.js" %>
       <!-- AdminLTE App -->
       <%= javascript_include_tag asset_url "/templates/adminLte/dist/js/adminlte.js" %>
+
+      <!-- DataTable insertion -->
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables/jquery.dataTables.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-responsive/js/dataTables.responsive.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/dataTables.buttons.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/jszip/jszip.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/pdfmake/pdfmake.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/pdfmake/vfs_fonts.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/buttons.html5.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/buttons.print.min.js" %>
+      <%= javascript_include_tag asset_url "/templates/adminLte/plugins/datatables-buttons/js/buttons.colVis.min.js" %>
 
       <script>
         $.widget.bridge('uibutton', $.ui.button)

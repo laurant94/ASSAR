@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :starter, only: [:index, :new, :create]
   resources :users
 
+  # Application routes
   namespace :app do
     root to: "dashboard#index"
     get '/login', to: "sessions#new", as: :login
@@ -14,7 +15,14 @@ Rails.application.routes.draw do
     get 'dashboard', to: "dashboard#index", as: :dashboard
     get 'settings', to: 'settings#edit', as: :settings
     patch 'settings', to: 'settings#update'
-    resources :posts, :events, :collects
+
+    resources :posts, :events
+    resources :connecteds, only: [:index, :create, :update, :destroy]
+    resources :collects do
+      member do
+        post "contribute", to: "collects#contribute", as: :contribution
+      end
+    end
     
     
     resources :children
@@ -34,8 +42,13 @@ Rails.application.routes.draw do
     end
   end
 
+
+
   namespace :admin do
     resources :churches
   end
+
+
+  mount Pwa::Engine, at: ''
 
 end

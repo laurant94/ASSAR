@@ -1,0 +1,95 @@
+<div class="card">
+  <div class="card-header">
+    <h3>Connections</h3>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-12 text-right">
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" 
+        data-target="#modal-connected">
+          <i class="fa fa-plus"></i> Demander une connexion
+        </button>
+      </div>
+    </div> <br>
+
+    <table id="connectedList" class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Station</th>
+          <th>Date de la demande</th>
+          <th>Etat</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @connecteds.each do |f| %>
+          <tr>
+            <td> <%= f.id %> </td>
+            <td> <%= f.auth.acronym %> </td>
+            <td> <%= str_time(f.created_at) %> </td>
+            <td> <%= f.approved? ? "Appouver" : "En attente" %> </td>
+            <td>  
+              <%= link_to content_tag('i', f.approved? ? 'Rejeter' : 'Approuver', class: f.approved? ? "fa" : "fa fa-check"), app_connected_path(f), method: :patch, data: { confirm: 'Are you sure?' }, class: "btn btn-xs text-white mb-2 #{f.approved? ? 'btn-danger ' : 'btn-success'}" %>
+              <%= link_to content_tag('i', 'Supprimer', class: "fa fa-trash"), app_connected_path(f), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs text-white mb-2' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<div id="modal-connected" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <%= form_for :app_connected, html: { multipart: true }, url: app_connecteds_path  do |f| %>
+      <div class="modal-header">
+        <h4 class="modal-title">Demander une connexion</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <%= f.label :auth_id, 'Membres' %>
+          <%= f.select :auth_id, 
+          options_for_select(@childs.map{|m| [m.acronym, m.id]}),{}, 
+          {class: "form-control", required: true} %>
+        </div>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Annuler</button>
+        <%= f.submit 'Ajouter', class:"btn btn-primary btn-sm" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<% content_for :page_name, 'view.connected' %>
+
+<% content_for :styles do%>
+  
+<% end %>
+
+
+<% content_for :script do%>
+
+  <script>
+    $('#connectedList').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  </script>
+<% end %>

@@ -10,5 +10,10 @@ class Child < ApplicationRecord
   has_many :groups, -> {includes :faithfuls }
   # association avec post
   has_many :posts
+
+  # Association connecteds
+  has_many :targets, class_name: "Connected", foreign_key: "parent_id"
+  has_many :auths, class_name: "Connected", foreign_key: "auth_id"
+
   
 end
