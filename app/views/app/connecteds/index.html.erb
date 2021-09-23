@@ -31,7 +31,7 @@
             <td> <%= f.approved? ? "Appouver" : "En attente" %> </td>
             <td>  
               <%= link_to content_tag('i', f.approved? ? 'Rejeter' : 'Approuver', class: f.approved? ? "fa" : "fa fa-check"), app_connected_path(f), method: :patch, data: { confirm: 'Are you sure?' }, class: "btn btn-xs text-white mb-2 #{f.approved? ? 'btn-danger ' : 'btn-success'}" %>
-              <%= link_to content_tag('i', 'Supprimer', class: "fa fa-trash"), app_connected_path(f), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs text-white mb-2' %>
+              <%= link_to content_tag('i', 'Supprimer', class: "fa fa-trash"), app_connected_path(f) , method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs text-white mb-2' %>
             </td>
           </tr>
         <% end %>

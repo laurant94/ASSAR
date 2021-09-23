@@ -2,6 +2,7 @@
   "name": "assa",
   "private": true,
   "dependencies": {
-    "actiontext": "https://github.com/kobaltz/actiontext"
+    "actiontext": "https://github.com/kobaltz/actiontext",
+    "pwa-rails": "^4.0.6"
   }
 }
