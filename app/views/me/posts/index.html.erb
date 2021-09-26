@@ -1,0 +1,19 @@
+<div class="card elevation-0">
+  <div class="card-header h4 text-center">
+    Publications recentes
+  </div>
+  <div class="card-body">
+    <% @posts.each do |post| %>
+      <% if post.post? %>
+        <%= render "me/ui/explorer/post", post: post, truncate: true %>
+      <% elsif post.collecte? %>
+        <%= render "me/ui/explorer/collecte", post: post, truncate: true,
+        level: post.searched_amount > 0 ? ((100*post.find_amount)/post.searched_amount).to_i : 0 %>
+      <% elsif post.event? %>
+        <%= render "me/ui/explorer/event", post: post, truncate: true %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'me/ui/explorer/share_modal' %>

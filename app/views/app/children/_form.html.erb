@@ -47,8 +47,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :location_descriptor %>
-    <%= form.text_field :location_descriptor,class: "form-control" %>
+    <%= form.label :location_description %>
+    <%= form.text_field :location_description,class: "form-control" %>
   </div>
 
   <div class="field">
@@ -74,6 +74,16 @@
   <div class="field">
     <%= form.label :manager_id %>
     <%= form.number_field :manager_id, class: "form-control" %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :avatar, "Image en avant" %>
+    <%= form.file_field :avatar, class: "form-control", required: false %>
+    <%= form.hidden_field :avatar_cache %>
+  </div>
+
+  <div class="mt-2 ">
+    <%= image_tag app_child.avatar.thumb.url, alt: 'thumbnail' if app_child.avatar.present? %>
   </div>
 
   <div class="text-right">

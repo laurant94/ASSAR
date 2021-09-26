@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-12">
+    <!-- Box Comment -->
+    <div class="card card-widget ">
+      <div class="card-header">
+        <div class="user-block">
+          <img class="img-circle" 
+          src="<%= post.child.present? and post.child.avatar.present? ? 
+          post.child.avatar.mini.url : asset_url('/templates/adminLte/img/event.jpeg') %>" alt="User Image">
+          <span class="username"><a href="#"> <%= post.child.acronym %> </a></span>
+          <span class="description"> <%= "#{str_time(post.created_at)}" %> </span>
+        </div>
+        <div class="text-right">
+          <span class="text-muted"> Evènement </span>
+        </div>
+      </div>
+      <!-- /.card-header -->
+      <div class="card-body" data-id="<%= post.id %>" data-url="<%= me_post_url(post) %>">
+        <%= image_tag post.thumb.thumbnail.url, class: "img-fluid pad" if post.thumb? %>
+
+        <div class="row">
+          <div class="col-12">
+            <% post.content = " #{post.content.truncate(500)} [Lire plus](#{me_post_path(post)})" if post.content.length > 500 and truncate %>
+            <%= markdown( post.content ) %>
+          </div>
+          <div class="col-12 row">
+            <div class="col-md-6">
+              <div class="callout callout-info">
+                <h5>Date de debut</h5>
+                <p> <%= "#{post.marked_to.strftime("%d %b %Y")}" %> </p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="callout callout-info">
+                <h5>Date de fin</h5>
+                <p> <%= "#{post.unmarked_to.strftime("%d %b %Y")}" %> </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <button type="button" class="btn btn-default btn-sm post-share" data-toggle="modal" 
+        data-target="#modal-me-collecte">
+          <i class="fas fa-share"></i> Share
+        </button>
+        <button type="button" class="btn btn-sm post-like <%= post.likes.where(faithful: current_user, liked: true).first.present? ? 'btn-primary' : 'btn-default' %>">
+          <i class="far fa-thumbs-up"></i> Like
+        </button>
+        <button type="button" class="btn btn-sm post-favorite <%= post.favorites.where(faithful: current_user, liked: true).first.present? ? 'btn-primary' : 'btn-default' %>">
+          <i class="far fa-heart"></i> Participe
+        </button>
+        
+        <span class="float-right text-muted state"> 
+          <%= content_tag 'span', "#{post.likes.liked.size} ", class: "state-like" %> likes - 
+          <%= content_tag 'span', "#{post.favorites.liked.size} ", class: "state-favorite" %> Participations
+        </span>
+      </div>
+     
+    </div>
+    <!-- /.card -->
+  </div>
+ 
+</div>

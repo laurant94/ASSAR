@@ -1,11 +1,11 @@
 class App::Collect < Post
   before_create :add_type
   before_validation :calcul_remaining, only: [:save, :update]
-  default_scope { where(mark: Post::marks[:collecte]) }
+  default_scope { where(mark: Post.marks[:collecte]) }
 
   private
   def add_type
-    mark = Post::marks[:collecte]
+    mark = Post.marks[:collecte]
   end
 
   def calcul_remaining

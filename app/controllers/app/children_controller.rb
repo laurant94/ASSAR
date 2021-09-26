@@ -68,6 +68,7 @@ class App::ChildrenController < ApplicationController
     def app_child_params
       params.require(:app_child).permit(:name, :acronym, :city, :district, :phone,
         :email, :location, :location_description, :post_code, :president_id, 
-        :vice_president_id, :secretary_id, :manager_id)
+        :vice_president_id, :secretary_id, :manager_id, :avatar, 
+        :avatar_cache )
     end
 end

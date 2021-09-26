@@ -15,5 +15,5 @@ class Child < ApplicationRecord
   has_many :targets, class_name: "Connected", foreign_key: "parent_id"
   has_many :auths, class_name: "Connected", foreign_key: "auth_id"
 
-  
+  mount_uploader :avatar, ChildUploader
 end

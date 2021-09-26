@@ -1,6 +1,6 @@
 class Church < ApplicationRecord
   default_scope { includes(:setting) }
-  enum categories: { Bonbon: 1, Billard: 2 }
+  enum categorie: { Bonbon: 1, Billard: 2 }
 
   belongs_to :manager, -> {includes :managed_church}, class_name: "App::Faithful", foreign_key: "manager_id"
   has_many :childs

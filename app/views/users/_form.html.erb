@@ -33,16 +33,15 @@
     <%= form.text_field :password_confirmation %>
   </div>
 
-  <%= form.fields_for :church do |f| %>
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-    <div class="field">
-      <%= f.label :acronym %>
-      <%= f.text_field :acronym %>
-    </div>
-  <% end %>
+  <div class="field">
+    <%= form.label :avatar, "Image en avant" %>
+    <%= form.file_field :avatar, class: "form-control", required: false %>
+    <%= form.hidden_field :avatar_cache %>
+  </div>
+
+  <div class="mt-2 ">
+    <%= image_tag user.avatar.thumb.url, alt: 'thumbnail' if user.avatar.present? %>
+  </div>
   
 
   <div class="actions">

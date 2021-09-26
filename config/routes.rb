@@ -43,6 +43,20 @@ Rails.application.routes.draw do
   end
 
 
+  # faithful user routes
+  namespace :me, only: [:index, :show, :update] do
+    root to: 'posts#index'
+    resources :posts do
+      member do
+        patch 'like', to: "posts#like", as: :like
+        patch 'comment', to: 'posts#comment', as: :comment
+        patch 'favorite', to: 'posts#favorite', as: :favorite
+      end
+    end
+      get '/calendar', to: 'posts#calendar', as: :calendar
+      get '/favorites', to: 'posts#favorites', as: :favorites
+  end
+
 
   namespace :admin do
     resources :churches

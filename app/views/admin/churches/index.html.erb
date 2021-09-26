@@ -39,7 +39,7 @@
         <td><%= admin_church.location_description %></td>
         <td><%= admin_church.email %></td>
         <td><%= admin_church.post_code %></td>
-        <td><%= admin_church.admin %></td>
+        <td><%= admin_church.manager ? admin_church.manager.fullname : "Aucun" %></td>
         <td><%= link_to 'Show', admin_church %></td>
         <td><%= link_to 'Edit', edit_admin_church_path(admin_church) %></td>
         <td><%= link_to 'Destroy', admin_church, method: :delete, data: { confirm: 'Are you sure?' } %></td>

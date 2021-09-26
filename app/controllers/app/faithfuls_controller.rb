@@ -65,6 +65,6 @@ class App::FaithfulsController < ApplicationController
 
   def user_params
     params.require(:app_faithful).permit(:phone, :email, :firstname, :lastname,
-    :profession, :child_id)
+    :profession, :approved)
   end
 end

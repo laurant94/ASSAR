@@ -29,12 +29,26 @@ class User < ApplicationRecord
   has_many :contributions, class_name: "Contribution", foreign_key: "contribution_id"
   has_many :posts, through: :contributions
 
+  # association likes
+  has_many :likes
+  has_many :posts, through: :likes
+
+  # association comments
+  has_many :comments
+  has_many :posts, through: :comments
+
+  # association favorites
+  has_many :favorites
+  has_many :posts, through: :favorites
+
   
   has_secure_password
   has_secure_token :token
 
   # accepts_nested_attributes_for :church, update_only: true
 
+  # user avatar uploader
+  mount_uploader :avatar, UserUploader
 
   # scopes
   scope :childs, -> { includes(:childs )}
