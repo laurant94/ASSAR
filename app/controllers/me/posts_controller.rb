@@ -21,25 +21,73 @@ class Me::PostsController < ApplicationController
       liked = !like.liked
       like.update_columns(liked: !like.liked)
     end
+    ActionCable.server.broadcast('post', {
+      action: "like",
+      post: {
+        id: @post.id
+      },
+      count: @post.likes.liked.size,
+      liker: {
+        id: like.faithful.id,
+        fullname: like.faithful.fullname,
+        firstname: like.faithful.firstname,
+        lastname: like.faithful.lastname
+      },
+      message: ""
+    })
     render json: {liked: liked}
   end
 
   def comment
-    content = params.require(:comment).permit(:content)[:content]
-    @post.comments << Comment.new(faithful: current_user, content: content)
-    redirect_to me_post_path(@post)
+    comment = Comment.new(faithful: current_user, content: params[:comment])
+    @post.comments << comment
+    # redirect_to me_post_path(@post)
+    ActionCable.server.broadcast("post", {
+      action: "comment",
+      post: {
+        id: @post.id
+      },
+      count: @post.comments.liked.size,
+      liker: {
+        id: comment.faithful.id,
+        fullname: comment.faithful.fullname,
+        firstname: comment.faithful.firstname,
+        lastname: comment.faithful.lastname
+      },
+      html: ApplicationController.render(partial: 'me/ui/explorer/single_comment', locals: {
+        comment: comment
+      }),
+      message: ""
+    })
+    render json: {post: params}
   end
 
   def favorite
-    like = @post.favorites.where(faithful: current_user).first
+    favorite = @post.favorites.where(faithful: current_user).first
     liked = false
-    unless like.present?
-      @post.favorites << Favorite.new(faithful: current_user)
+    unless favorite.present?
+      favorite = Favorite.new(faithful: current_user)
+      @post.favorites << favorite
       liked = true;
     else
-      liked = !like.liked
-      like.update_columns(liked: !like.liked)
+      liked = !favorite.liked
+      favorite.update_columns(liked: !favorite.liked)
     end
+    ActionCable.server.broadcast("post", {
+      action: "favorite",
+      post: {
+        id: @post.id
+      },
+      count: @post.favorites.liked.size,
+      liker: {
+        id: favorite.faithful.id,
+        fullname: favorite.faithful.fullname,
+        firstname: favorite.faithful.firstname,
+        lastname: favorite.faithful.lastname
+      },
+      html: "",
+      message: ""
+    })
     render json: {liked: liked}
   end
 

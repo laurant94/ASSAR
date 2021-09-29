@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header text-muted">
+        <h5>Commentaires</h5>
+      </div>
+      <div class="card-body">
+
+        <div id="comments">
+          <!-- Comments -->
+          <% post.comments.liked.each do |comment| %>
+            <!-- comment -->
+            <%= render "me/ui/explorer/single_comment", comment: comment %>   
+          <% end %>
+        </div>
+
+        <!--  new comment -->
+        <div class="offset-1 col-10">
+          <div class="card elevation-0">
+            <div class="card-header">
+              <h6>Ecrire un commentaire</h6>
+            </div>
+            <div class="card-body">
+                <textarea id="comment" rows="5" class="form-control"></textarea>   
+                <div class="row">
+                  <div class="col-12 text-right">
+                    <button class="btn btn-primary btn-sm mt-1 post-comment" >Commenter</button>
+                  </div>
+                </div>      
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

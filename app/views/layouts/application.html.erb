@@ -10,36 +10,26 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-
-   
     <%= content_for :styles %>
-
-    
     <% unless content_for?(:noapp)   %>
       <%= render 'layouts/templates/starter/includes' %>
        <!-- <script src="<%=root_url%>dist/js/pages/dashboard.js"></script> -->
     <% end %>
-    
-    
-
   </head>
 
   <body class="hold-transition sidebar-mini layout-fixed">
+   
     <div class="wrapper">
-      
       <% unless content_for?(:noapp)  %>
-        
         <%= render 'layouts/templates/starter/body' %>
       <% else %>
         <%= yield %>
       <% end %>
-      
-      
-
     </div>
 
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
     <%= yield :script %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 
 </html>

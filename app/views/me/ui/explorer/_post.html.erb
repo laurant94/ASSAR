@@ -15,7 +15,7 @@
         </div>
       </div>
       <!-- /.card-header -->
-      <div class="card-body" data-id="<%= post.id %>" data-url="<%= me_post_url(post) %>">
+      <div class="card-body" id="<%= "post-#{post.id}" %>" data-id="<%= post.id %>" data-url="<%= me_post_url(post) %>">
         <%= image_tag post.thumb.thumbnail.url, class: "img-fluid pad" if post.thumb? %>
 
         <div class="row">
@@ -38,7 +38,7 @@
         
         <span class="float-right text-muted state"> 
           <%= content_tag 'span', "#{post.likes.liked.size} ", class: "state-like" %> likes - 
-          <%= content_tag 'span', "#{post.comments.size} ", class: "state-comments" %> comments
+          <%= content_tag 'span', "#{post.comments.size} ", class: "state-comment" %> comments
         </span>
       </div>
      

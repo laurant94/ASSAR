@@ -4,9 +4,9 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :title
       t.text :content
       t.text :thumb
-      t.integer :mark, null: false, default: 1
-      t.integer :statut, null: false, default: 1 #1: public 
-      t.integer :state, null: false, default: 1
+      t.integer :mark, null: false, default: 1 # type de publication
+      t.integer :status, null: false, default: 2 #1: public 
+      t.integer :state, null: false, default: 1 #etat de la publlication
       t.datetime :published_at
       t.datetime :unpublished_at
       t.datetime :marked_to
@@ -17,7 +17,6 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       
       t.references :author, references: :users, foreign_key: {to_table: :users}
       t.references :child, foreign_key: true
-      
 
       t.timestamps
     end

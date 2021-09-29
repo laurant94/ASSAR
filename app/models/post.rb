@@ -22,6 +22,8 @@ class Post < ApplicationRecord
   has_many :faithfuls, class_name: "User", foreign_key: "user_id", through: :favorites
   
   enum mark: { post: 1, event: 2, collecte: 3 }
+  enum status: {all_post: 1, church_post: 2, group_post: 3, private_post: 4 }
+  enum state: { show_post: 1, hide_post: 2 }
   mount_uploader :thumb, ThumbUploader
 
   scope :mark_post, -> { where(:mark => marks[:post])}

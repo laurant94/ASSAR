@@ -1,12 +1,15 @@
-<% if @post.post? %>
-  <%= render "me/ui/explorer/post", post: @post, truncate: false %>
-<% elsif @post.collecte? %>
-  <%= render "me/ui/explorer/collecte", post: @post, truncate: false,
-  level: @post.searched_amount > 0 ? ((100*post.find_amount)/post.searched_amount).to_i : 0 %>
-<% elsif @post.event? %>
-  <%= render "me/ui/explorer/event", post: @post, truncate: false %>
-<% end %>
+<div id="post">
+  <% if @post.post? %>
+    <%= render "me/ui/explorer/post", post: @post, truncate: false %>
+  <% elsif @post.collecte? %>
+    <%= render "me/ui/explorer/collecte", post: @post, truncate: false,
+    level: @post.searched_amount > 0 ? ((100*post.find_amount)/post.searched_amount).to_i : 0 %>
+  <% elsif @post.event? %>
+    <%= render "me/ui/explorer/event", post: @post, truncate: false %>
+  <% end %>
 
-<%= render "me/ui/explorer/comment", post: @post %>
+  <%= render "me/ui/explorer/comments", post: @post %>
 
-<%= render 'me/ui/explorer/share_modal' %>
+  <%= render 'me/ui/explorer/share_modal' %>
+
+</div>

@@ -1,0 +1,88 @@
+ <div class="form-check setting-navbar-border">
+        <%= f.check_box :navbar_border, class: "form-check-input" %>
+        <%= f.label :navbar_border, 'Bordure du menu du haut', class: "form-check-label" %>
+      </div>
+      <div class="form-check setting-body-small-text">
+        <%= f.check_box :body_small_text, class: "form-check-input" %>
+        <%= f.label :body_small_text, 'Utiliser les petit textes pour les pages', class: "form-check-label" %>
+      </div>
+      <div class="form-check setting-navbar-small-text">
+        <%= f.check_box :navbar_small_text, class: "form-check-input" %>
+        <%= f.label :navbar_small_text, 'Utiliser les petit textes pour le menu principal', class: "form-check-label" %>
+      </div>
+      <!-- sidebar small text -->
+      <div class="form-check setting-sidebar-small-text">
+        <%= f.check_box :sidebar_small_text, class: "form-check-input" %>
+        <%= f.label :sidebar_small_text, 'Utiliser les petit textes pour le menu latéral', class: "form-check-label" %>
+      </div>
+      <!-- footer small text -->
+      <div class="form-check setting-footer-small-text">
+        <%= f.check_box :footer_small_text, class: "form-check-input" %>
+        <%= f.label :footer_small_text, 'Utiliser les petit textes pour le pieds de page', class: "form-check-label" %>
+      </div>
+      <!-- sidebar nav flat style -->
+      <div class="form-check setting-sidebar-nav-flat-style">
+        <%= f.check_box :sidebar_nav_flat_style, class: "form-check-input" %>
+        <%= f.label :sidebar_nav_flat_style, 'Style plat de navigation de la barre latérale', class: "form-check-label" %>
+      </div>
+      <!-- Sidebar nav legacy style -->
+      <div class="form-check setting-sidebar-nav-legacy-style">
+        <%= f.check_box :sidebar_nav_legacy_style, class: "form-check-input" %>
+        <%= f.label :sidebar_nav_legacy_style, 'Style hérité de navigation de la barre latérale', class: "form-check-label" %>
+      </div>
+      <!-- sidebar nav compact -->
+      <div class="form-check setting-sidebar-nav-compact">
+        <%= f.check_box :sidebar_nav_compact, class: "form-check-input" %>
+        <%= f.label :sidebar_nav_compact, 'Barre de navigation laterale compacte', class: "form-check-label" %>
+      </div>
+
+      <!-- sidebar nav child indent -->
+      <div class="form-check setting-sidebar-nav-child-indent">
+        <%= f.check_box :sidebar_nav_child_indent, class: "form-check-input" %>
+        <%= f.label :sidebar_nav_child_indent, 'Barre latérale navigation enfant retrait', class: "form-check-label" %>
+      </div>
+      <!-- sidebar nav hide on collapse -->
+      <div class="form-check setting-sidebar-nav-hide-on-collapse">
+        <%= f.check_box :sidebar_nav_hide_on_collapse, class: "form-check-input" %>
+        <%= f.label :sidebar_nav_hide_on_collapse, 'Barre latérale de navigation masquer lors de la réduction', class: "form-check-label" %>
+      </div>
+      <!-- sidebar disable auto expand -->
+      <div class="form-check setting-sidebar-disable-auto-expand">
+        <%= f.check_box :sidebar_disable_auto_expand, class: "form-check-input" %>
+        <%= f.label :sidebar_disable_auto_expand, "Barre latérale désactiver l'expansion automatique", class: "form-check-label" %>
+      </div>
+      <!-- brand small text -->
+      <div class="form-check setting-brand-small-text">
+        <%= f.check_box :brand_small_text, class: "form-check-input" %>
+        <%= f.label :brand_small_text, 'Petit texte de la marque', class: "form-check-label" %>
+      </div>
+      <!-- dark navbar -->
+      <div class="form-check setting-dark-navbar">
+        <%= f.check_box :dark_navbar, class: "form-check-input" %>
+        <%= f.label :dark_navbar, 'Barre de navigation sombre', class: "form-check-label " %>
+      </div>
+      <!-- narbar color -->
+      <div class="form-group">
+        <%= f.label :navbar_color, 'Couleur de la barre de navigation' %>
+        <%= f.select :navbar_color, Setting::navbar_dark_skins, {}, {class: "form-control setting-navbar-color"} %>
+      </div>
+      <!-- accent color -->
+      <div class="form-group">
+        <%= f.label :accent_color, "couleur d'accent" %>
+        <%= f.select :accent_color, Setting::accent_colors, {}, {class: "form-control setting-accent-color"} %>
+      </div>
+      <!-- dark sidebar -->
+      <div class="form-check">
+        <%= f.check_box :dark_sidebar, class: "form-check-input" %>
+        <%= f.label :dark_sidebar, 'Barre latérale sombre', class: "form-check-label setting-dark-sidebar" %>
+      </div>
+      <!-- sidebar color -->
+      <div class="form-group">
+        <%= f.label :sidebar_color, "Couleur de la barre latérale" %>
+        <%= f.select :sidebar_color, ["Salut"], {}, {class: "form-control"} %>
+      </div>
+      <!-- brand logo color -->
+      <div class="form-group">
+        <%= f.label :brand_logo_color, "Couleur du logo de la marque" %>
+        <%= f.select :brand_logo_color, ["Salut"], {}, {class: "form-control"} %>
+      </div>

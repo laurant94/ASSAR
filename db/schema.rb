@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(version: 2021_09_24_233543) do
     t.text "content"
     t.text "thumb"
     t.integer "mark", default: 1, null: false
-    t.integer "statut", default: 1, null: false
+    t.integer "priority", default: 1, null: false
     t.integer "state", default: 1, null: false
     t.datetime "published_at"
     t.datetime "unpublished_at"
@@ -227,8 +227,8 @@ ActiveRecord::Schema.define(version: 2021_09_24_233543) do
   add_foreign_key "churches", "users", column: "manager_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
-  add_foreign_key "connecteds", "children", column: "auth_id"
-  add_foreign_key "connecteds", "children", column: "parent_id"
+  add_foreign_key "connecteds", "churches", column: "auth_id"
+  add_foreign_key "connecteds", "churches", column: "parent_id"
   add_foreign_key "contributions", "posts"
   add_foreign_key "contributions", "users", column: "faithful_id"
   add_foreign_key "faithful_group", "groups"

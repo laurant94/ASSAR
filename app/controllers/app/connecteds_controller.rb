@@ -3,7 +3,7 @@ class App::ConnectedsController < ApplicationController
 
   # GET /connecteds or /connecteds.json
   def index
-    @connecteds = current_user.managed_child.targets
+    @connecteds = current_user.managed_child.church.targets
     @childs = current_user.managed_child.church.childs
     .without(current_user.managed_child)
   end
@@ -22,27 +22,27 @@ class App::ConnectedsController < ApplicationController
 
   # POST /connecteds or /connecteds.json
   def create
-    @current_child = current_user.managed_child
-    @child = Child.find(connected_params[:auth_id])
-    @child = @current_child.targets.where(auth_id: @child.id).first
-    unless @child.present?
-      @current_child.targets << App::Connected.new(connected_params)
-      redirect_to app_connecteds_path, notice: "Connexion was successfully created." 
-    else
-      redirect_to app_connecteds_path, notice: "Connexion already exist." 
-    end
+    # @current_child = current_user.managed_child
+    # @child = Child.find(connected_params[:auth_id])
+    # @child = @current_child.targets.where(auth_id: @child.id).first
+    # unless @child.present?
+    #   @current_child.targets << App::Connected.new(connected_params)
+    #   redirect_to app_connecteds_path, notice: "Connexion was successfully created." 
+    # else
+    #   redirect_to app_connecteds_path, notice: "Connexion already exist." 
+    # end
   end
 
   # PATCH/PUT /connecteds/1 or /connecteds/1.json
   def update
-    @connected.update_columns(approved: !@connected.approved)
-    redirect_to app_connecteds_path, notice: "Connection success updated"
+    # @connected.update_columns(approved: !@connected.approved)
+    # redirect_to app_connecteds_path, notice: "Connection success updated"
   end
 
   # DELETE /connecteds/1 or /connecteds/1.json
   def destroy
-    @connected.destroy
-    redirect_to app_connecteds_path, notice: "Connection success deteled"
+    # @connected.destroy
+    # redirect_to app_connecteds_path, notice: "Connection success deteled"
   end
 
   private
