@@ -1,0 +1,51 @@
+<li class="nav-header">ADMINISTRATION</li>
+<% if current_user.managed_church? %>
+<li class="nav-item">
+  <a href="<%=app_children_path%>" data-turbolinks="false" class="nav-link <%= 'active' if content_for?(:page_name) and content_for(:page_name) == 'view.childs' %>">
+    <i class="nav-icon fas fa-archive"></i>
+    <p>
+      Stations
+    </p>
+  </a>
+</li>
+
+<li class="nav-item">
+  <a href="<%=app_children_path%>" data-turbolinks="false" class="nav-link <%= 'active' if content_for?(:page_name) and content_for(:page_name) == 'view.childs' %>">
+    <i class="nav-icon fas fa-archive"></i>
+    <p>
+      Fidèles
+    </p>
+  </a>
+</li>
+
+<li class="nav-item">
+  <a href="<%=app_children_path%>" data-turbolinks="false" class="nav-link <%= 'active' if content_for?(:page_name) and content_for(:page_name) == 'view.childs' %>">
+    <i class="nav-icon fas fa-archive"></i>
+    <p>
+      Plaintes
+    </p>
+  </a>
+</li>
+
+<li class="nav-item">
+  <a href="<%=app_connecteds_path%>" data-turbolinks="false" class="nav-link <%= "active" if content_for?(:page_name) and content_for(:page_name) == 'view.connecteds' %>">
+    <i class="nav-icon fas fa-usd"></i>
+    <p>
+      Abonnés
+    </p>
+  </a>
+</li>
+<% end %>
+
+
+<!-- Manager d'eglise -->
+<% if current_user.managed_church? %>
+<li class="nav-item">
+  <a href="<%=app_settings_path%>" class="nav-link <%= 'active' if content_for?(:page_name) and content_for(:page_name) == 'view.settings' %>">
+    <i class="nav-icon fas fa-cog"></i>
+    <p>
+      Configurations
+    </p>
+  </a>
+</li>
+<% end %>

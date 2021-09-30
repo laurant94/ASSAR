@@ -34,13 +34,16 @@
     <nav class="mt-2">
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         
-        <!-- Sidebar loading -->
-        <% if request.path.starts_with?('/app') %>
-          <%= render 'layouts/templates/starter/app_sidebar' %>
-        <% elsif request.path.starts_with?('/me') %>
-          <%= render 'layouts/templates/starter/user_sidebar' %>
+        <!-- Church manager items -->
+        <% if current_user.managed_church? %>
+          <%= render 'layouts/templates/starter/admin_sidebar' %>
         <% end %>
- 
+        <!-- Child manager items -->
+        <% if current_user.managed_child? %>
+          <%= render 'layouts/templates/starter/app_sidebar' %>
+        <% end %>
+        <!-- Child manager items -->
+        <%= render 'layouts/templates/starter/user_sidebar' %>
         
       </ul>
     </nav>

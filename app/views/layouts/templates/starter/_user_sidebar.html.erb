@@ -1,3 +1,5 @@
+<li class="nav-header">FIDELE</li>
+
 <li class="nav-item ">
   <a href="<%=me_root_path%>" data-turbolinks="false" class="nav-link <%= "active" if content_for?(:page_name) and content_for(:page_name) == 'view.dashboard' %>">
     <i class="nav-icon fas fa-database"></i>
@@ -6,6 +8,32 @@
     </p>
   </a>
 </li>
+<!-- Groupes -->
+
+<% if current_user.groups.present? %>
+  <li class="nav-item">
+    <a href="#" class="nav-link">
+      <i class="nav-icon fas fa-users"></i>
+      <p>
+        Groupes
+        <i class="right fas fa-angle-left"></i>
+      </p>
+    </a>
+    <ul class="nav nav-treeview">
+      <% current_user.groups.each do |group| %>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <%= content_tag 'p', group.acronym %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>
+
+
+
 <!-- Publications -->
 <li class="nav-item ">
   <a href="<%=me_posts_path(type: :post)%>" data-turbolinks="false" class="nav-link <%= "active" if content_for?(:page_name) and content_for(:page_name) == 'view.dashboard' %>">
