@@ -1,15 +1,20 @@
-## 1. Notes
+## Notes
 
-#### 2. Version
+#### 1. Version
   - Rails 5.2.5
   - Ruby 2.6.5
   
-### 3. Technologies
+### 2. Technologies
   - Ajax comments
   - Favorites
   
-### 4. Other technologies
+### 3. Other technologies
   - WebSockets
 
-### 6. shared files
+### 5. shared files
   ###### [CATALOG DESIGN AND TABLE DEFINITION](https://docs.google.com/spreadsheets/d/1T4NIHj4t2oKoiShKM0RucqCJK5buYpaFRZfWDLIq5RY/edit?usp=sharing)
+
+
+### 6. Screenshots
+  ###### Screen transition
+    ![Screen transition](https://drive.google.com/file/d/1lVnhngds6HKnRhzgEaaC3AAHC3_IojAk/view?usp=sharing)
