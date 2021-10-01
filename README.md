@@ -17,5 +17,5 @@
 
 ### 6. Screenshots
   ###### Screen transition
-  [![image](https://drive.google.com/file/d/1lVnhngds6HKnRhzgEaaC3AAHC3_IojAk/view?usp=sharing)](https://drive.google.com/file/d/1lVnhngds6HKnRhzgEaaC3AAHC3_IojAk/view?usp=sharing)
+  [![image](Entity%20Relationship%20Diagram.png)](https://drive.google.com/file/d/1lVnhngds6HKnRhzgEaaC3AAHC3_IojAk/view?usp=sharing)
     
