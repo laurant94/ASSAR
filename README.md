@@ -16,8 +16,10 @@
 
 
 ### 6. Screenshots
-  ###### Screen transition
+  #### Screen transition
   [![image](Entity%20Relationship%20Diagram.png)](https://drive.google.com/file/d/1lVnhngds6HKnRhzgEaaC3AAHC3_IojAk/view?usp=sharing)
 
+
+  #### ER diagram
   [![image](ER.png)](https://drive.google.com/file/d/1GF0tYVWQ_nu0jWpgYCEBut3J2sZ5d23G/view?usp=sharing)
     
