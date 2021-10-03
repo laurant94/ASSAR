@@ -12,10 +12,12 @@
   - WebSockets
 
 ### 5. shared files
-  ###### [CATALOG DESIGN AND TABLE DEFINITION](https://docs.google.com/spreadsheets/d/1T4NIHj4t2oKoiShKM0RucqCJK5buYpaFRZfWDLIq5RY/edit?usp=sharing)
+  ###### [CATALOG DESIGN AND TABLE DEFINITION](https://docs.google.com/spreadsheets/d/11kvptQy_YhfZyh2LUTB9hzUpy8cjNbjusj1xo3lgPOs/edit?usp=sharing)
 
 
 ### 6. Screenshots
   ###### Screen transition
   [![image](Entity%20Relationship%20Diagram.png)](https://drive.google.com/file/d/1lVnhngds6HKnRhzgEaaC3AAHC3_IojAk/view?usp=sharing)
+
+  [![image](ER.png)](https://drive.google.com/file/d/1GF0tYVWQ_nu0jWpgYCEBut3J2sZ5d23G/view?usp=sharing)
     
