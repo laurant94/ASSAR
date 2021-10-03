@@ -31,6 +31,6 @@
 
   #### ER diagram
   [MySQL Workbench ER Diagram](https://drive.google.com/file/d/1CGvpwK31TULrE3COJSewdzTVCTglhjNp/view?usp=sharing)
-  
-  [![image](ER.png)](https://drive.google.com/file/d/132wGWqFDlo86j-7yZ1EgiSr9JiQRy26b/view?usp=sharing)
+
+  [![image](ER_u.png)](https://drive.google.com/file/d/132wGWqFDlo86j-7yZ1EgiSr9JiQRy26b/view?usp=sharing)
     
