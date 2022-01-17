@@ -53,8 +53,10 @@ Rails.application.routes.draw do
         patch 'favorite', to: 'posts#favorite', as: :favorite
       end
     end
-      get '/calendar', to: 'posts#calendar', as: :calendar
-      get '/favorites', to: 'posts#favorites', as: :favorites
+    get '/calendar', to: 'posts#calendar', as: :calendar
+    get '/favorites', to: 'posts#favorites', as: :favorites
+
+    resources :groups, only: [:show, :update]
   end
 
 

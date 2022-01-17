@@ -41,6 +41,9 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :posts, through: :favorites
 
+  # Association avec GroupMessage
+  has_many :group_messages, class_name: "groupMessage", foreign_key: "user_id"
+
   
   has_secure_password
   has_secure_token :token

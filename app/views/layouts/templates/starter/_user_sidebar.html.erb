@@ -22,7 +22,7 @@
     <ul class="nav nav-treeview">
       <% current_user.groups.each do |group| %>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="<%= me_group_path(group) %>" class="nav-link">
             <i class="far fa-circle nav-icon"></i>
             <%= content_tag 'p', group.acronym %>
           </a>

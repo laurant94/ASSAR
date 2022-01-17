@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_24_233543) do
+ActiveRecord::Schema.define(version: 2021_10_04_202205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -122,6 +122,21 @@ ActiveRecord::Schema.define(version: 2021_09_24_233543) do
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
+  create_table "group_messages", force: :cascade do |t|
+    t.text "content"
+    t.text "file"
+    t.boolean "system", default: false, null: false
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.bigint "replay_id"
+    t.boolean "deleted", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_messages_on_group_id"
+    t.index ["replay_id"], name: "index_group_messages_on_replay_id"
+    t.index ["user_id"], name: "index_group_messages_on_user_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "acronym"
@@ -166,6 +181,29 @@ ActiveRecord::Schema.define(version: 2021_09_24_233543) do
     t.integer "comments_count", default: 0
     t.index ["author_id"], name: "index_posts_on_author_id"
     t.index ["child_id"], name: "index_posts_on_child_id"
+  end
+
+  create_table "room_messages", force: :cascade do |t|
+    t.text "content"
+    t.text "file"
+    t.boolean "system", default: false, null: false
+    t.text "description"
+    t.bigint "user_id"
+    t.bigint "room_id"
+    t.boolean "deleted", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_room_messages_on_room_id"
+    t.index ["user_id"], name: "index_room_messages_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.text "thumb"
+    t.integer "type", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "settings", force: :cascade do |t|
@@ -235,11 +273,16 @@ ActiveRecord::Schema.define(version: 2021_09_24_233543) do
   add_foreign_key "faithful_group", "users", column: "faithful_id"
   add_foreign_key "favorites", "posts"
   add_foreign_key "favorites", "users"
+  add_foreign_key "group_messages", "group_messages", column: "replay_id"
+  add_foreign_key "group_messages", "groups"
+  add_foreign_key "group_messages", "users"
   add_foreign_key "groups", "children"
   add_foreign_key "groups", "users", column: "manager_id"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
   add_foreign_key "posts", "children"
   add_foreign_key "posts", "users", column: "author_id"
+  add_foreign_key "room_messages", "rooms"
+  add_foreign_key "room_messages", "users"
   add_foreign_key "settings", "churches"
 end
